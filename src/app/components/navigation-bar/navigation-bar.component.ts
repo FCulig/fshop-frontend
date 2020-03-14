@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { faShoppingCart, faUser } from '@fortawesome/free-solid-svg-icons';
+import { faShoppingCart, faUser, faMale, faFemale, faChild } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-navigation-bar',
@@ -10,7 +10,10 @@ export class NavigationBarComponent implements OnInit {
 
   faShoppingCart = faShoppingCart;
   faUser = faUser;
-
+  faMale = faMale;
+  faFemale = faFemale;
+  faChild = faChild;
+  
   constructor() { }
 
   ngOnInit() {

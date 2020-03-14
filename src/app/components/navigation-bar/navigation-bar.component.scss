@@ -56,6 +56,25 @@ ul.navigation li a:hover {
   background-color: $black !important;
 }
 
+.small-dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.small-dropdown-content {
+  display: none;
+  position: absolute;
+  right: 0;
+  min-width: 160px;
+  z-index: 1;
+  background-color: $black !important;
+}
+
+.small-dropdown:hover .small-dropdown-content,
+.small-dropdown-content:hover .small-dropdown-content {
+  display: block;
+}
+
 .dropdown:hover .big-dropdown-content,
 .big-dropdown-content:hover .big-dropdown-content {
   display: block;
@@ -64,7 +83,7 @@ ul.navigation li a:hover {
 .big-dropdown-content {
   display: none;
   position: absolute;
-  background-color: #f9f9f9;
+  background-color: white;
   width: 800px;
   left: -300px;
   top: 58px;
@@ -82,7 +101,6 @@ ul.navigation li a:hover {
 .column {
   float: left;
   width: 33.33%;
-  background-color: #ccc;
   height: 250px;
   padding-top: 10px;
 }
@@ -168,4 +186,13 @@ ul.navigation li a:hover {
       left: 80%;
     }
   }
+}
+
+.column fa-icon{
+  background-color: white;
+  font-size: 25pt;
+}
+
+.column fa-icon#child{
+  font-size: 15pt;
 }
