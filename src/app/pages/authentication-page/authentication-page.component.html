@@ -1,0 +1,28 @@
+<div class="logo-container">
+  <img class="logo" src="../../../assets/Images/FullLogo.jpg">
+</div>
+<div class="container">
+  <div class="login-form-container">
+  </div>
+
+  <div class="registration-form-container">
+    <form class="example-form" [formGroup]="registrationForm" (ngSubmit)="register()">
+      <mat-form-field>
+        <mat-label>Ime</mat-label>
+        <input type="text" name="first_name" formControlName="name" matInput>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Prezime</mat-label>
+        <input type="text" name="last_name" formControlName="surname" matInput>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>E-Mail</mat-label>
+        <input type="email" name="email" formControlName="email" matInput>
+      </mat-form-field>
+
+      <button type="submit" mat-raised-button color="accent">Registracija</button>
+    </form>
+  </div>
+</div>

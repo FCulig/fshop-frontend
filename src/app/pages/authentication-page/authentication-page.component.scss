@@ -1,0 +1,49 @@
+$black: #0b0c10;
+$lighter-black: #1a1d27;
+$grey: #c5c6c7;
+$flourescent-blue: #66fcf1;
+$flourescent-blue-faded: #66fcf293;
+
+.container {
+  background-color: $lighter-black;
+}
+
+.login-form-container {
+}
+
+.logo-container {
+  width: 100%;
+  background-color: $lighter-black;
+}
+
+.logo {
+  width: 50%;
+  display: block;
+  margin: auto;
+  background-color: $lighter-black !important;
+}
+
+/* tekst unutar inputa */
+::ng-deep input.mat-input-element {
+  color: $flourescent-blue;
+}
+
+/* label kad je fokusiran */
+::ng-deep .mat-form-field.mat-focused .mat-form-field-label {
+  color: $flourescent-blue !important;
+}
+
+/* label kad nije fokusiran */
+::ng-deep .mat-form-field .mat-form-field-label {
+    color: $grey !important;
+  }
+
+  /* crta kad nije fokusirana  NE RADI*/
+::ng-deep .mat-form-field-underline {
+    background-color: $grey !important;
+  }
+
+/* crta kad je fokusirana */
+::ng-deep .mat-focused .mat-form-field-underline .mat-form-field-ripple {
+  background-color: $flourescent-blue !important;
+}

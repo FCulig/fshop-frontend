@@ -1,0 +1,18 @@
+$black: #0b0c10;
+$grey: #c5c6c7;
+$flourescent-blue: #66fcf1;
+$flourescent-blue-faded: #66fcf293;
+
+footer{
+    color: $grey;
+    background-color: $black;
+}
+
+.container{
+    max-width: 800px;
+    margin: auto;
+}
+
+.copyright-container{
+    text-align: center;
+}

@@ -28,7 +28,9 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "./node_modules/@angular/material/prebuilt-themes/pink-bluegrey.css",
+              "src/styles.scss",
+              "./src/materialtheme.scss"
             ],
             "scripts": []
           },
@@ -93,6 +95,7 @@
               "src/assets"
             ],
             "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/pink-bluegrey.css",
               "src/styles.scss"
             ],
             "scripts": []
@@ -124,6 +127,7 @@
           }
         }
       }
-    }},
+    }
+  },
   "defaultProject": "fshop"
 }
