@@ -1,28 +1,89 @@
-<div class="logo-container">
-  <img class="logo" src="../../../assets/Images/FullLogo.jpg">
-</div>
-<div class="container">
-  <div class="login-form-container">
+<div class="component-container">
+  <div class="logo-container">
+    <img class="logo" src="../../../assets/Images/FullLogo.jpg">
   </div>
+  <div class="container">
+    <div class="login-form-container form-container">
+      <div class="login-active" *ngIf="isRegister == true">
+        <div class="active-text">
+          <span>Imate korinički račun?</span>
+          <button class="submitButton" (click)="switchForm()" mat-raised-button color="accent">Prijava</button>
+        </div>
+      </div>
+      <form *ngIf="isRegister == false" class="login-form" [formGroup]="registrationForm" (ngSubmit)="register()">
+        <h1>Prijavite se:</h1>
+        <mat-form-field>
+          <mat-label>E-Mail</mat-label>
+          <input type="email" name="email" formControlName="email" matInput>
+        </mat-form-field>
 
-  <div class="registration-form-container">
-    <form class="example-form" [formGroup]="registrationForm" (ngSubmit)="register()">
-      <mat-form-field>
-        <mat-label>Ime</mat-label>
-        <input type="text" name="first_name" formControlName="name" matInput>
-      </mat-form-field>
+        <mat-form-field>
+          <mat-label>Lozinka</mat-label>
+          <input type="password" name="password" formControlName="password" matInput>
+        </mat-form-field>
 
-      <mat-form-field>
-        <mat-label>Prezime</mat-label>
-        <input type="text" name="last_name" formControlName="surname" matInput>
-      </mat-form-field>
+        <button class="submitButton" type="submit" mat-raised-button color="accent">Prijava</button>
+      </form>
+    </div>
 
-      <mat-form-field>
-        <mat-label>E-Mail</mat-label>
-        <input type="email" name="email" formControlName="email" matInput>
-      </mat-form-field>
+    <div class="registration-form-container form-container">
+      <div class="login-active" *ngIf="isRegister == false">
+        <div class="active-text">
+          <span>Nemate korinički račun?</span>
+          <button class="submitButton" (click)="switchForm()" mat-raised-button color="accent">Registracija</button>
+        </div>
+      </div>
+      <form *ngIf="isRegister == true" class="register-form" [formGroup]="registrationForm" (ngSubmit)="register()">
+        <h1>Registrirajte se:</h1>
+        <mat-form-field>
+          <mat-label>Ime</mat-label>
+          <input type="text" name="first_name" formControlName="name" matInput>
+        </mat-form-field>
 
-      <button type="submit" mat-raised-button color="accent">Registracija</button>
-    </form>
+        <mat-form-field>
+          <mat-label>Prezime</mat-label>
+          <input type="text" name="last_name" formControlName="surname" matInput>
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Datum rođenja</mat-label>
+          <input name="datumRodenja" formControlName="birthDate" matInput [matDatepicker]="picker">
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Korisničko ime</mat-label>
+          <input type="text" name="username" formControlName="username" matInput>
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>E-Mail</mat-label>
+          <input type="email" name="email" formControlName="email" matInput>
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Lozinka</mat-label>
+          <input type="password" name="password" formControlName="password" matInput>
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Ponovite lozinku:</mat-label>
+          <input type="password" name="repeatedPassword" formControlName="repeatedPassword" matInput>
+        </mat-form-field>
+
+        <div class="image-upload-field">
+          <label for="fileInput">Odaberite fotografiju profila:</label>
+          <button mat-raised-button color="accent" type="button" id="fileInputButton" (click)="fileInput.click()">
+            <span>
+              <fa-icon [icon]="faUpload"></fa-icon>
+            </span>
+            <input id="fileInput" #fileInput type="file" (change)="onFileInput($event)" style="display:none;" />
+          </button>
+        </div>
+
+        <button class="submitButton" type="submit" mat-raised-button color="accent">Registracija</button>
+      </form>
+    </div>
   </div>
 </div>

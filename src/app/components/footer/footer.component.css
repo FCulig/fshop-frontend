@@ -1,0 +1,14 @@
+footer {
+  color: #c5c6c7;
+  background-color: #0b0c10;
+}
+
+.container {
+  max-width: 800px;
+  margin: auto;
+}
+
+.copyright-container {
+  text-align: center;
+}
+/*# sourceMappingURL=footer.component.css.map */

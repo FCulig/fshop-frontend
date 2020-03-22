@@ -1,0 +1,41 @@
+.container {
+  background-color: #1a1d27;
+}
+
+.logo-container {
+  width: 100%;
+  background-color: #1a1d27;
+}
+
+.logo {
+  width: 50%;
+  display: block;
+  margin: auto;
+  background-color: #1a1d27 !important;
+}
+
+/* tekst unutar inputa */
+::ng-deep input.mat-input-element {
+  color: #66fcf1;
+}
+
+/* label kad je fokusiran */
+::ng-deep .mat-form-field.mat-focused .mat-form-field-label {
+  color: #66fcf1 !important;
+}
+
+/* label kad nije fokusiran */
+::ng-deep .mat-form-field .mat-form-field-label {
+  color: #c5c6c7 !important;
+}
+
+/* crta kad nije fokusirana  NE RADI*/
+::ng-deep .mat-form-field-underline {
+  background-color: #c5c6c7 !important;
+}
+
+/* crta kad je fokusirana */
+::ng-deep .mat-focused .mat-form-field-underline .mat-form-field-ripple {
+  background-color: #66fcf1 !important;
+}
+/*# sourceMappingURL=authentication-page.component.css.map */

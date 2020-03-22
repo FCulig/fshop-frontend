@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { FormGroup, FormBuilder } from "@angular/forms";
+import { faUpload } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: "app-authentication-page",
@@ -8,18 +9,40 @@ import { FormGroup, FormBuilder } from "@angular/forms";
 })
 export class AuthenticationPageComponent implements OnInit {
   registrationForm: FormGroup;
+  loginForm: FormGroup;
 
-  constructor(private fb: FormBuilder) {}
+  faUpload = faUpload;
+
+  isRegister = false;
+
+  constructor(private fb: FormBuilder) { }
 
   ngOnInit() {
     this.registrationForm = this.fb.group({
       name: "",
       surname: "",
-      email: ""
+      email: "",
+      birthDate: "",
+      username: "",
+      password: "",
+      repeatedPassword: "",
+    });
+
+    this.loginForm = this.fb.group({
+      email: "",
+      password: "",
     });
   }
 
   register() {
     console.log("Register");
+  }
+
+  login() {
+    console.log("Login");
+  }
+
+  switchForm() {
+    this.isRegister = !this.isRegister;
   }
 }

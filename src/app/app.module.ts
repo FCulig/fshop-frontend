@@ -15,9 +15,11 @@ import {
   MatInputModule,
   MatRippleModule,
   MatSlider,
-  MatSliderModule
+  MatSliderModule,
+  MatNativeDateModule
 } from "@angular/material";
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { MatDatepickerModule } from '@angular/material/datepicker';
 
 const matFormModules = [
   MatButtonModule,
@@ -42,10 +44,12 @@ const matFormModules = [
     BrowserAnimationsModule,
     matFormModules,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ],
   exports: [matFormModules],
-  providers: [],
+  providers: [MatDatepickerModule],
   bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule { }

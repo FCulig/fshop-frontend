@@ -4,11 +4,26 @@ $grey: #c5c6c7;
 $flourescent-blue: #66fcf1;
 $flourescent-blue-faded: #66fcf293;
 
-.container {
+.component-container {
   background-color: $lighter-black;
+  padding-bottom: 50px;
 }
 
-.login-form-container {
+.container {
+  background-color: $black !important;
+  display: grid;
+  grid-template-columns: 50% 50%;
+  border-radius: 15px;
+  color: $grey;
+  height: 700px;
+  //border: 1px solid $flourescent-blue;
+}
+
+.container h1 {
+  color: $flourescent-blue;
+  text-align: center;
+  display: inline-block;
+  margin-bottom: 25px;
 }
 
 .logo-container {
@@ -35,15 +50,71 @@ $flourescent-blue-faded: #66fcf293;
 
 /* label kad nije fokusiran */
 ::ng-deep .mat-form-field .mat-form-field-label {
-    color: $grey !important;
-  }
+  color: $grey !important;
+}
 
-  /* crta kad nije fokusirana  NE RADI*/
+/* crta kad nije fokusirana  NE RADI*/
 ::ng-deep .mat-form-field-underline {
-    background-color: $grey !important;
-  }
+  background-color: $grey !important;
+}
 
 /* crta kad je fokusirana */
 ::ng-deep .mat-focused .mat-form-field-underline .mat-form-field-ripple {
   background-color: $flourescent-blue !important;
+}
+
+mat-form-field {
+  display: inline-block;
+  width: 100%;
+}
+
+.form-container {
+  display: grid;
+  grid-template-columns: 100%;
+  padding: 25px;
+}
+
+label {
+  color: $grey;
+  display: inline-block;
+}
+
+button#fileInputButton {
+  margin-left: 30px;
+  margin-bottom: 20px;
+}
+
+fa-icon {
+  font-size: 15pt;
+}
+
+button.submitButton {
+  display: block;
+  width: 60%;
+  margin: 25px auto;
+}
+
+.login-form-container {
+  margin-top: 200px;
+}
+
+.login-active {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  height: 100%;
+}
+
+.registration-form-container .active-text {
+  margin-top: 290px;
+}
+
+.login-form-container .active-text {
+  margin-top: 100px;
+}
+
+.registration-form-container {
+}
+
+.register-form{
 }
