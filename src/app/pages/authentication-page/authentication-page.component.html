@@ -10,7 +10,7 @@
           <button class="submitButton" (click)="switchForm()" mat-raised-button color="accent">Prijava</button>
         </div>
       </div>
-      <form *ngIf="isRegister == false" class="login-form" [formGroup]="registrationForm" (ngSubmit)="register()">
+      <form *ngIf="isRegister == false" class="login-form" [formGroup]="loginForm" (ngSubmit)="login()">
         <h1>Prijavite se:</h1>
         <mat-form-field>
           <mat-label>E-Mail</mat-label>
@@ -37,39 +37,63 @@
         <h1>Registrirajte se:</h1>
         <mat-form-field>
           <mat-label>Ime</mat-label>
-          <input type="text" name="first_name" formControlName="name" matInput>
+          <input type="text" name="first_name" formControlName="first_name" matInput>
+          <mat-error *ngIf="firstName.hasError('required')">
+            Ime je <strong>obavezno</strong>
+          </mat-error>
         </mat-form-field>
 
         <mat-form-field>
           <mat-label>Prezime</mat-label>
-          <input type="text" name="last_name" formControlName="surname" matInput>
+          <input type="text" name="last_name" formControlName="last_name" matInput>
+          <mat-error *ngIf="lastName.hasError('required')">
+            Prezime je <strong>obavezno</strong>
+          </mat-error>
         </mat-form-field>
 
         <mat-form-field>
           <mat-label>Datum rođenja</mat-label>
-          <input name="datumRodenja" formControlName="birthDate" matInput [matDatepicker]="picker">
+          <input name="birth_date" formControlName="birth_date" matInput [matDatepicker]="picker">
           <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
           <mat-datepicker #picker></mat-datepicker>
+          <mat-error *ngIf="dateOfBirth.hasError('required')">
+            Datum rođenja je <strong>obavezan</strong>
+          </mat-error>
         </mat-form-field>
 
         <mat-form-field>
           <mat-label>Korisničko ime</mat-label>
           <input type="text" name="username" formControlName="username" matInput>
+          <mat-error *ngIf="registerUsername.hasError('required')">
+            Korisničko ime je <strong>obavezno</strong>
+          </mat-error>
         </mat-form-field>
 
         <mat-form-field>
           <mat-label>E-Mail</mat-label>
           <input type="email" name="email" formControlName="email" matInput>
+          <mat-error *ngIf="email.hasError('email') && !email.hasError('required')">
+            Unesite valjanu email adresu
+          </mat-error>
+          <mat-error *ngIf="email.hasError('required')">
+            Email je <strong>obavezan</strong>
+          </mat-error>
         </mat-form-field>
 
         <mat-form-field>
           <mat-label>Lozinka</mat-label>
           <input type="password" name="password" formControlName="password" matInput>
+          <mat-error *ngIf="registerPassword.hasError('required')">
+            Lozinka je <strong>obavezna</strong>
+          </mat-error>
         </mat-form-field>
 
         <mat-form-field>
           <mat-label>Ponovite lozinku:</mat-label>
-          <input type="password" name="repeatedPassword" formControlName="repeatedPassword" matInput>
+          <input type="password" name="c_password" formControlName="c_password" matInput>
+          <mat-error *ngIf="registerConfirmedPassword.hasError('required')">
+            Morate <strong>ponoviti</strong> lozinku
+          </mat-error>
         </mat-form-field>
 
         <div class="image-upload-field">
@@ -82,7 +106,7 @@
           </button>
         </div>
 
-        <button class="submitButton" type="submit" mat-raised-button color="accent">Registracija</button>
+        <button [disabled]="!registrationForm.valid" class="submitButton" type="submit" mat-raised-button color="accent">Registracija</button>
       </form>
     </div>
   </div>

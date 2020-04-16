@@ -14,12 +14,16 @@ import {
   MatFormFieldModule,
   MatInputModule,
   MatRippleModule,
-  MatSlider,
   MatSliderModule,
   MatNativeDateModule
 } from "@angular/material";
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { MatDatepickerModule } from '@angular/material/datepicker';
+import { SimpleNotificationsModule } from 'angular2-notifications';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { DashboardComponent } from './pages/dashboard/dashboard.component';
+import { JwtInterceptor } from './authentication/jwtinterceptor';
+import { ErrorInterceptor } from './authentication/error-interceptor';
 
 const matFormModules = [
   MatButtonModule,
@@ -35,21 +39,28 @@ const matFormModules = [
     NavigationBarComponent,
     HomePageComponent,
     FooterComponent,
-    AuthenticationPageComponent
+    AuthenticationPageComponent,
+    DashboardComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FontAwesomeModule,
-    BrowserAnimationsModule,
     matFormModules,
     FormsModule,
     ReactiveFormsModule,
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    BrowserAnimationsModule,
+    HttpClientModule,
+    SimpleNotificationsModule.forRoot()
   ],
   exports: [matFormModules],
-  providers: [MatDatepickerModule],
+  providers: [
+    MatDatepickerModule,
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

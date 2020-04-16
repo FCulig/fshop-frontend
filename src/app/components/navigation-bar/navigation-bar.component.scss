@@ -26,21 +26,19 @@ ul.navigation li {
   float: left;
   list-style-type: none;
   margin: 0 10px;
-}
 
-ul.navigation li a {
-  display: block;
-  text-decoration: none;
-  color: $flourescent-blue-faded;
-  padding: 10px;
-  border-radius: 5px;
-}
+  a {
+    display: block;
+    text-decoration: none;
+    color: $flourescent-blue-faded;
+    padding: 10px;
+    border-radius: 5px;
 
-ul.navigation li a:hover {
-  color: $flourescent-blue;
+    &:hover {
+      color: $flourescent-blue;
+    }
+  }
 }
-
-//Dropdowns
 
 .dropdown {
   position: relative;
@@ -54,30 +52,6 @@ ul.navigation li a:hover {
   min-width: 160px;
   z-index: 1;
   background-color: $black !important;
-}
-
-.small-dropdown {
-  position: relative;
-  display: inline-block;
-}
-
-.small-dropdown-content {
-  display: none;
-  position: absolute;
-  right: 0;
-  min-width: 160px;
-  z-index: 1;
-  background-color: $black !important;
-}
-
-.small-dropdown:hover .small-dropdown-content,
-.small-dropdown-content:hover .small-dropdown-content {
-  display: block;
-}
-
-.dropdown:hover .big-dropdown-content,
-.big-dropdown-content:hover .big-dropdown-content {
-  display: block;
 }
 
 .big-dropdown-content {
@@ -97,28 +71,26 @@ ul.navigation li a:hover {
   background-color: $black;
 }
 
-/* Create three equal columns that floats next to each other */
 .column {
   float: left;
   width: 33.33%;
   height: 250px;
   padding-top: 10px;
+
+  a {
+    float: none;
+    color: black;
+    padding: 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+
+    &:hover {
+      background-color: #ddd;
+    }
+  }
 }
 
-.column a {
-  float: none;
-  color: black;
-  padding: 16px;
-  text-decoration: none;
-  display: block;
-  text-align: left;
-}
-
-.column a:hover {
-  background-color: #ddd;
-}
-
-/* Clear floats after the columns */
 .row:after {
   content: "";
   display: table;
@@ -188,11 +160,74 @@ ul.navigation li a:hover {
   }
 }
 
-.column fa-icon{
-  background-color: white;
-  font-size: 25pt;
+.column {
+  fa-icon {
+    background-color: white;
+    font-size: 25pt;
+  }
+
+  fa-icon#child {
+    font-size: 15pt;
+  }
 }
 
-.column fa-icon#child{
-  font-size: 15pt;
+.login-dropdown {
+  width: 200px !important;
+  text-align: center;
+  padding: 8px;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+.small-dropdown {
+  position: relative;
+  display: inline-block;
+
+  span {
+    margin-right: 10px;
+  }
+}
+
+.small-dropdown-content {
+  display: none;
+  position: absolute;
+  right: 0;
+  min-width: 160px;
+  z-index: 1;
+  background-color: $black !important;
+
+  button {
+    width: calc(100% - 10px);
+    background-color: $flourescent-blue-faded;
+    border: 0;
+    border-radius: 5px;
+    padding: 5px;
+    font-size: 1.25em;
+    margin: 5px;
+
+    &:hover {
+      background-color: $flourescent-blue;
+    }
+
+    a {
+      color: black !important;
+    }
+  }
+
+  small {
+    font-size: 0.75em;
+    color: $grey;
+  }
+}
+
+.small-dropdown:hover .small-dropdown-content,
+.small-dropdown-content:hover .small-dropdown-content,
+.dropdown:hover .big-dropdown-content,
+.big-dropdown-content:hover .big-dropdown-content {
+  display: block;
+}
+
+#register-link {
+  padding: 0 !important;
+  margin: 0;
 }
