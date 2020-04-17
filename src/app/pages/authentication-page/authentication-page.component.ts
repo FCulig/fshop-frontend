@@ -7,6 +7,7 @@ import { User } from 'src/app/entities/user';
 import { formatDate } from '@angular/common';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { NotificationService } from 'src/app/services/notification.service';
 
 @Component({
   selector: "app-authentication-page",
@@ -24,8 +25,8 @@ export class AuthenticationPageComponent implements OnInit {
   constructor(
     private userService: UserService,
     private fb: FormBuilder,
-    private notificationService: NotificationsService,
     private authenticationService: AuthenticationService,
+    private notificationService: NotificationService,
     private route: ActivatedRoute,
     private router: Router) { }
 
@@ -69,36 +70,12 @@ export class AuthenticationPageComponent implements OnInit {
     });
   }
 
-  private showErrorNotification(message: string) {
-    this.notificationService.error('Pogreška', message, {
-      timeOut: 8000,
-      showProgressBar: false,
-      pauseOnHover: true,
-      clickToClose: true,
-      clickIconToClose: true
-    });
-  }
-
-  private showSuccessNotification() {
-    this.notificationService.success('Uspješna registracija!', '', {
-      timeOut: 8000,
-      showProgressBar: false,
-      pauseOnHover: true,
-      clickToClose: true,
-      clickIconToClose: true
-    });
-  }
-
   register() {
-    if (this.confirmedPasswordCheck()) {
+    if (this.passwordsMatch()) {
       this.registrationForm.value.birth_date = formatDate(this.registrationForm.value.birth_date, 'yyyy-MM-dd', 'en');
       this.userService.registerUser(this.registrationForm.value).subscribe(val => {
-        if (val.duplicateEmail) {
-          this.showErrorNotification('Već postoji korisnik s ovom email adresom!');
-        } else if (val.duplicateUsername) {
-          this.showErrorNotification('Već postoji korisnik s ovom korisničkim imenom!');
-        } else {
-          this.showSuccessNotification();
+        if (val) {
+          this.notificationService.showSuccessNotification('Uspješno ste se registrirali!', '');
           this.router.navigate(['/authentication']);
         }
       });
@@ -108,7 +85,7 @@ export class AuthenticationPageComponent implements OnInit {
   login() {
     this.authenticationService.login(this.loginForm.value.email, this.loginForm.value.password).subscribe(val => {
       if (val.message) {
-        this.showErrorNotification('Email ili lozinka nisu točni!');
+        this.notificationService.showErrorNotification('Email ili lozinka nisu točni!', '');
       } else {
         this.router.navigate(['/']);
       }
@@ -119,9 +96,9 @@ export class AuthenticationPageComponent implements OnInit {
     this.isRegister = !this.isRegister;
   }
 
-  private confirmedPasswordCheck() {
+  private passwordsMatch() {
     if (this.registerConfirmedPassword.value !== this.registerPassword.value) {
-      this.showErrorNotification('Lozinke se ne podudaraju!');
+      this.notificationService.showErrorNotification('Lozinke se ne podudaraju!', '');
       return false;
     } else {
       return true;
@@ -144,7 +121,7 @@ export class AuthenticationPageComponent implements OnInit {
     return this.registrationForm.get('birth_date');
   }
 
-  get registerUsername(){
+  get registerUsername() {
     return this.registrationForm.get('username');
   }
 

@@ -47,7 +47,6 @@ export class NavigationBarComponent implements OnInit {
 
   private subscribeAuthenticationEvents() {
     this.authenticationService.currentUser.subscribe(val => {
-      console.log(val);
       if (val && val.user.username) {
         this.isLoggedIn = true;
         this.username = val.user.username;
