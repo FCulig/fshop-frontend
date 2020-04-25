@@ -24,6 +24,9 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { JwtInterceptor } from './authentication/jwtinterceptor';
 import { ErrorInterceptor } from './authentication/error-interceptor';
+import { ProfilePageComponent } from './pages/profile-page/profile-page.component';
+import { LoaderComponent } from './components/loader/loader.component';
+import { NgxUiLoaderModule, NgxUiLoaderConfig, POSITION, SPINNER, PB_DIRECTION } from 'ngx-ui-loader';
 
 const matFormModules = [
   MatButtonModule,
@@ -33,6 +36,7 @@ const matFormModules = [
   ReactiveFormsModule,
   MatSliderModule
 ];
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -41,6 +45,8 @@ const matFormModules = [
     FooterComponent,
     AuthenticationPageComponent,
     DashboardComponent,
+    ProfilePageComponent,
+    LoaderComponent,
   ],
   imports: [
     BrowserModule,
@@ -53,7 +59,8 @@ const matFormModules = [
     MatNativeDateModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    SimpleNotificationsModule.forRoot()
+    SimpleNotificationsModule.forRoot(),
+    NgxUiLoaderModule,
   ],
   exports: [matFormModules],
   providers: [

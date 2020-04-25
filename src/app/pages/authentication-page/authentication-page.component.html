@@ -102,11 +102,12 @@
             <span>
               <fa-icon [icon]="faUpload"></fa-icon>
             </span>
-            <input id="fileInput" #fileInput type="file" (change)="onFileInput($event)" style="display:none;" />
+            <input id="fileInput" formControlName="profile_picture" #fileInput type="file" (change)="onFileChanged($event)" style="display:none;" />
           </button>
         </div>
 
-        <button [disabled]="!registrationForm.valid" class="submitButton" type="submit" mat-raised-button color="accent">Registracija</button>
+        <button [disabled]="!registrationForm.valid" class="submitButton" type="submit" mat-raised-button
+          color="accent">Registracija</button>
       </form>
     </div>
   </div>

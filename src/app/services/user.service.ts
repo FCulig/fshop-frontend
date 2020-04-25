@@ -13,4 +13,8 @@ export class UserService {
   registerUser(user: any): Observable<any> {
     return this.http.post<any>(Endpoints.BASE_URL + Endpoints.REGISTER, user);
   }
+
+  getUserWithId(userId: number): Observable<any> {
+    return this.http.get(Endpoints.BASE_URL + Endpoints.USERS + '/' + userId);
+  }
 }

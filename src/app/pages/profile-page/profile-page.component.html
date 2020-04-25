@@ -1,0 +1,43 @@
+<ngx-ui-loader bgsColor="#66FCF1"></ngx-ui-loader>
+<div *ngIf="user && role">
+    <div class="header">
+        <div class="profile-image-conainer">
+            <img src="{{profilePictureUrl}}" />
+        </div>
+        <div class="username-container">
+            <h2>{{user.username}}</h2>
+        </div>
+    </div>
+    <div class="body">
+        <div class="user-details">
+            <table class="user-info">
+                <tr>
+                    <td colspan="2">{{user.first_name}} {{user.last_name}}</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>
+                        <fa-icon [icon]="faEnvelope"></fa-icon>
+                    </td>
+                    <td>{{user.email}}</td>
+                </tr>
+                <tr>
+                    <td>
+                        <fa-icon [icon]="faBirthdayCake"></fa-icon>
+                    </td>
+                    <td>{{user.birth_date}}</td>
+                </tr>
+                <tr>
+                    <td>
+                        <fa-icon [icon]="faUserTag"></fa-icon>
+                    </td>
+                    <td>{{role}}</td>
+                </tr>
+            </table>
+            <button class="button" *ngIf="isUsersProfile">Uredi pojedinosti</button>
+        </div>
+        <div class="user-content">
+
+        </div>
+    </div>
+</div>

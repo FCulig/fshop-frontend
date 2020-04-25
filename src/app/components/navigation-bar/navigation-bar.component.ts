@@ -17,8 +17,9 @@ export class NavigationBarComponent implements OnInit {
   faFemale = faFemale;
   faChild = faChild;
 
-  @Input() isLoggedIn: boolean;
-  @Input() username: string;
+  isLoggedIn: boolean;
+  username: string;
+  userId: number;
 
   constructor(
     private authenticationService: AuthenticationService,
@@ -47,12 +48,14 @@ export class NavigationBarComponent implements OnInit {
 
   private subscribeAuthenticationEvents() {
     this.authenticationService.currentUser.subscribe(val => {
-      if (val && val.user.username) {
+      if (val && val.user && val.user.username) {
         this.isLoggedIn = true;
         this.username = val.user.username;
+        this.userId = val.user.id;
       } else {
         this.isLoggedIn = false;
         this.username = null;
+        this.userId = null;
       }
     });
   }

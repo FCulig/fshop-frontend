@@ -1,5 +1,8 @@
 {
     "BASE_URL" : "http://localhost:8000/api",
     "REGISTER": "/register",
-    "LOGIN": "/login"
+    "LOGIN": "/login",
+    "USERS": "/users",
+    "ROLES": "/roles",
+    "PROFILE_PICTURE": "/profilePicture/"
 }

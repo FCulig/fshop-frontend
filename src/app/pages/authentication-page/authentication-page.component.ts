@@ -22,6 +22,8 @@ export class AuthenticationPageComponent implements OnInit {
 
   isRegister = false;
 
+  selectedFile: File;
+
   constructor(
     private userService: UserService,
     private fb: FormBuilder,
@@ -57,7 +59,6 @@ export class AuthenticationPageComponent implements OnInit {
     });
   }
 
-  //TODO: dodaj za upload za sliku
   private createRegisterForm() {
     this.registrationForm = this.fb.group({
       first_name: [null, Validators.required],
@@ -67,13 +68,25 @@ export class AuthenticationPageComponent implements OnInit {
       username: [null, Validators.required],
       password: [null, Validators.required],
       c_password: [null, Validators.required],
+      profile_picture: []
     });
+  }
+
+  onFileChanged(event) {
+    this.selectedFile = event.target.files[0]
   }
 
   register() {
     if (this.passwordsMatch()) {
       this.registrationForm.value.birth_date = formatDate(this.registrationForm.value.birth_date, 'yyyy-MM-dd', 'en');
-      this.userService.registerUser(this.registrationForm.value).subscribe(val => {
+      let formData = new FormData();
+      formData.append('profile_picture', this.selectedFile, this.selectedFile.name)
+      for (var key in this.registrationForm.value) {
+        if (this.registrationForm.value.hasOwnProperty(key) && key != 'profile_picture' ) {
+          formData.append(key, this.registrationForm.value[key]);
+        }
+      }
+      this.userService.registerUser(formData).subscribe(val => {
         if (val) {
           this.notificationService.showSuccessNotification('Uspješno ste se registrirali!', '');
           this.router.navigate(['/authentication']);
