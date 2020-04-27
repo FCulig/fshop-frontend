@@ -1,0 +1,79 @@
+<h1>{{ data ? 'Uređivanje proizvoda': 'Novi proizvod'}}</h1>
+<div class="form-container">
+    <form class="product-form" [formGroup]="productForm" (ngSubmit)="submit()">
+        <mat-form-field>
+            <mat-label>Naziv proizvoda</mat-label>
+            <input type="text" name="name" formControlName="name" matInput>
+            <mat-error *ngIf="name.hasError('required')">
+                Naziv proizvoda je <strong>obavezan</strong>
+            </mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label>Opis proizvoda</mat-label>
+            <textarea name="description" formControlName="description" cols="30" rows="3" matInput></textarea>
+            <mat-error *ngIf="description.hasError('required')">
+                Opis proizvoda je <strong>obavezan</strong>
+            </mat-error>
+        </mat-form-field>
+
+        <div class="inline-fields">
+            <mat-form-field>
+                <mat-label>Raspoloživa količina</mat-label>
+                <input name="quantity" formControlName="quantity" matInput type="number">
+                <mat-error *ngIf="quantity.hasError('required')">
+                    Raspoloživa količina je <strong>obavezna</strong>
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-label>Cijena proizvoda €</mat-label>
+                <input name="price" formControlName="price" type="number" matInput>
+                <mat-error *ngIf="price.hasError('required')">
+                    Cijena proizvoda je <strong>obavezna</strong>
+                </mat-error>
+            </mat-form-field>
+        </div>
+
+        <div class="inline-fields">
+            <div class="image-upload-field">
+                <label for="fileInput">Odaberite fotografije proizvoda:</label>
+                <button mat-raised-button class="button" type="button" id="fileInputButton" (click)="fileInput.click()">
+                    <span>
+                        <fa-icon [icon]="faUpload"></fa-icon>
+                    </span>
+                    <input id="fileInput" formControlName="product_images" #fileInput type="file" multiple
+                        (change)="onFileChanged($event)" style="display:none;" />
+                </button>
+            </div>
+            <div class="currency-values">
+                Cijena: {{price.value | currency:'EUR'}} ({{price.value * 7.56 | number:'1.2-2'}} kn)
+            </div>
+        </div>
+
+        <div class="selected-images">
+            <img *ngFor="let img of imagePaths" [src]="img" />
+            <div *ngIf="imagePaths.length == 0">
+                <img *ngFor="let img of data?.images" [src]="getProductImage(img.id)" />
+            </div>
+        </div>
+
+        <mat-form-field>
+            <mat-label>Kategorija</mat-label>
+            <mat-select name="category_id" formControlName="category_id">
+                <mat-option *ngFor="let cat of categories" [value]="cat.id">
+                    {{cat.name}}
+                </mat-option>
+            </mat-select>
+            <mat-error *ngIf="category_id.hasError('required')">
+                Cijena proizvoda je <strong>obavezna</strong>
+            </mat-error>
+        </mat-form-field>
+
+        <div class="button-container">
+            <button [disabled]="!productForm.valid" class="button" type="submit"
+                mat-raised-button>{{ data ? 'Uredi': 'Dodaj'}}</button>
+            <button id="cancel" class="button" type="button" mat-raised-button (click)="cancel()">Odustani</button>
+        </div>
+    </form>
+</div>

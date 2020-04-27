@@ -15,7 +15,10 @@ import {
   MatInputModule,
   MatRippleModule,
   MatSliderModule,
-  MatNativeDateModule
+  MatNativeDateModule,
+  MatMenuModule,
+  MatDialogModule,
+  MatSelectModule
 } from "@angular/material";
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { MatDatepickerModule } from '@angular/material/datepicker';
@@ -27,6 +30,10 @@ import { ErrorInterceptor } from './authentication/error-interceptor';
 import { ProfilePageComponent } from './pages/profile-page/profile-page.component';
 import { LoaderComponent } from './components/loader/loader.component';
 import { NgxUiLoaderModule, NgxUiLoaderConfig, POSITION, SPINNER, PB_DIRECTION } from 'ngx-ui-loader';
+import { UsersProductsPageComponent } from './pages/users-products-page/users-products-page.component';
+import { ProductListViewComponent } from './components/product-list-view/product-list-view.component';
+import { ProductListItemComponent } from './components/product-list-item/product-list-item.component';
+import { ProductFormComponent } from './components/modals/product-form/product-form.component';
 
 const matFormModules = [
   MatButtonModule,
@@ -34,7 +41,10 @@ const matFormModules = [
   MatInputModule,
   MatRippleModule,
   ReactiveFormsModule,
-  MatSliderModule
+  MatSliderModule,
+  MatMenuModule,
+  MatDialogModule,
+  MatSelectModule
 ];
 
 @NgModule({
@@ -47,6 +57,10 @@ const matFormModules = [
     DashboardComponent,
     ProfilePageComponent,
     LoaderComponent,
+    UsersProductsPageComponent,
+    ProductListViewComponent,
+    ProductListItemComponent,
+    ProductFormComponent,
   ],
   imports: [
     BrowserModule,
@@ -63,6 +77,7 @@ const matFormModules = [
     NgxUiLoaderModule,
   ],
   exports: [matFormModules],
+  entryComponents: [ProductFormComponent],
   providers: [
     MatDatepickerModule,
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },

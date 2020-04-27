@@ -1,0 +1,19 @@
+<ngx-ui-loader bgsColor="#66FCF1"></ngx-ui-loader>
+<div *ngIf="isLoaded">
+    <div class="header">
+        <div class="title-container">
+            <h2>Moji proizvodi</h2>
+        </div>
+        <div class="new-product-button-container">
+            <button type="button" (click)="openProductForm()" class="button">Novi proizvod</button>
+        </div>
+    </div>
+    <div class="products-list-container">
+        <div *ngIf="!products" class="no-prodcuts">
+            Nemate prozvoda!
+        </div>
+        <div *ngIf="products" class="product-list">
+            <app-product-list-view [products]="products"></app-product-list-view>
+        </div>
+    </div>
+</div>

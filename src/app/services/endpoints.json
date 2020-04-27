@@ -4,5 +4,9 @@
     "LOGIN": "/login",
     "USERS": "/users",
     "ROLES": "/roles",
-    "PROFILE_PICTURE": "/profilePicture/"
+    "PROFILE_PICTURE": "/profilePicture/",
+    "PRODUCT_IMAGE":"/productImage/",
+    "PRODUCTS":"/product/",
+    "USERS_PRODUCTS_EXT": "/products",
+    "CATEGORIES": "/categories/"
 }

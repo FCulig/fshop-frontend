@@ -1,0 +1,40 @@
+$black: #0b0c10;
+$lighter-black: #1a1d27;
+$grey: #c5c6c7;
+$flourescent-blue: #66fcf1;
+$flourescent-blue-faded: #66fcf293;
+
+.header {
+    padding: 30px 0 15px;
+    background-color: $lighter-black;
+    display: grid;
+    grid-template-columns: 8fr 2fr;
+
+    .title-container h2 {
+        color: $flourescent-blue;
+        font-size: 3em;
+    }
+
+    .new-product-button-container{
+        display: flex;
+        align-content: center;
+        justify-content: flex-end;
+        button{
+            border: 0;
+            background-color: $flourescent-blue-faded;
+            color: $black;
+            padding: 10px;
+            font-size: 1.2em;
+            border-radius: 5px;
+
+            &:hover{
+                background-color: $flourescent-blue;
+            }
+        }
+    }
+}
+
+.products-list-container{
+    background-color: $lighter-black;
+    min-height: 100vh;
+}
