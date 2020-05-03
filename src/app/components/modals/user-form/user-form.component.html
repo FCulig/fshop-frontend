@@ -1,0 +1,76 @@
+<div class="form-container">
+    <h1>Uredite podatke:</h1>
+    <form [formGroup]="userForm" (ngSubmit)="submit()">
+
+        <div class="inline-fields">
+            <mat-form-field>
+                <mat-label>Ime</mat-label>
+                <input type="text" name="first_name" formControlName="first_name" matInput>
+                <mat-error *ngIf="firstName.hasError('required')">
+                    Ime je <strong>obavezno</strong>
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-label>Prezime</mat-label>
+                <input type="text" name="last_name" formControlName="last_name" matInput>
+                <mat-error *ngIf="lastName.hasError('required')">
+                    Prezime je <strong>obavezno</strong>
+                </mat-error>
+            </mat-form-field>
+        </div>
+
+        <div class="inline-fields">
+            <mat-form-field>
+                <mat-label>Korisničko ime</mat-label>
+                <input type="text" name="username" formControlName="username" matInput>
+                <mat-error *ngIf="username.hasError('required')">
+                    Korisničko ime je <strong>obavezno</strong>
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-label>E-Mail</mat-label>
+                <input type="email" name="email" formControlName="email" matInput>
+                <mat-error *ngIf="email.hasError('email') && !email.hasError('required')">
+                    Unesite valjanu email adresu
+                </mat-error>
+                <mat-error *ngIf="email.hasError('required')">
+                    Email je <strong>obavezan</strong>
+                </mat-error>
+            </mat-form-field>
+        </div>
+
+        <mat-form-field>
+            <mat-label>Datum rođenja</mat-label>
+            <input name="birth_date" formControlName="birth_date" matInput [matDatepicker]="picker">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+            <mat-error *ngIf="dateOfBirth.hasError('required')">
+                Datum rođenja je <strong>obavezan</strong>
+            </mat-error>
+        </mat-form-field>
+
+        <div class="image-upload-field">
+            <label for="fileInput">Fotografija profila:</label>
+            <button mat-raised-button color="accent" type="button" id="fileInputButton" (click)="fileInput.click()">
+                <span>
+                    <fa-icon [icon]="faUpload"></fa-icon>
+                </span>
+                <input id="fileInput" formControlName="profile_picture" #fileInput type="file"
+                    (change)="onFileChanged($event)" style="display:none;" />
+            </button>
+        </div>
+
+        <div class="selected-images">
+            <img [src]="imagePath" />
+            <img *ngIf="!imagePath" [src]="profilePictureUrl" />
+        </div>
+
+        <div class="button-container">
+            <button [disabled]="!userForm.valid" class="submit-button" type="submit" mat-raised-button
+                color="accent">Uredi</button>
+            <button (click)="cancel()" class="cancel-button" mat-raised-button>Odustani</button>
+        </div>
+    </form>
+</div>

@@ -1,0 +1,53 @@
+<div class="category-groups">
+    <h3>Grupe kategorija</h3>
+    <div class="table-container">
+        <mat-form-field>
+            <mat-label>Pretraga</mat-label>
+            <input matInput (keyup)="applyFilter($event)">
+        </mat-form-field>
+
+        <div class="mat-elevation-z8">
+            <table mat-table [dataSource]="categoryGroups" matSort>
+
+                <ng-container matColumnDef="id">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header>ID</th>
+                    <td mat-cell *matCellDef="let row"> {{row.id}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="name">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header>Naziv grupe</th>
+                    <td mat-cell *matCellDef="let row"> {{row.name}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="edit">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header></th>
+                    <td mat-cell *matCellDef="let row">
+                        <button mat-raised-button type="button" class="edit-button" (click)="openEditGroupModal(row)"
+                            matTooltip="Uređivanje grupe" aria-label="Uređivanje grupe">
+                            <fa-icon [icon]="faEdit"></fa-icon>
+                        </button> </td>
+                </ng-container>
+
+                <ng-container matColumnDef="delete">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header></th>
+                    <td mat-cell *matCellDef="let row">
+                        <button mat-raised-button type="button" class="delete-button" (click)="deleteGroup(row.id)"
+                            matTooltip="Brisanje grupe" aria-label="Brisanje grupe">
+                            <fa-icon [icon]="faTrash"></fa-icon>
+                        </button>
+                    </td>
+                </ng-container>
+
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;">
+                </tr>
+            </table>
+
+            <mat-paginator [pageSizeOptions]="[10]"></mat-paginator>
+        </div>
+    </div>
+
+    <button mat-raised-button class="new-button" (click)="openNewGroupModal()">
+        <fa-icon [icon]="faPlusSquare"></fa-icon> Nova grupa
+    </button>
+</div>

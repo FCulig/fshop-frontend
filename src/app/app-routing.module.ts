@@ -7,12 +7,15 @@ import { AuthGuard } from './authentication/auth-guard';
 import { ProfilePageComponent } from './pages/profile-page/profile-page.component';
 import { UsersProductsPageComponent } from './pages/users-products-page/users-products-page.component';
 import { UserWithIdGuardGuard } from './authentication/user-with-id-guard.guard';
+import { AdminPageComponent } from './pages/admin-page/admin-page.component';
+import { AdminGuard } from './authentication/admin.guard';
 
 
 const routes: Routes = [
   { path: 'user-products/:id', component: UsersProductsPageComponent, canActivate: [UserWithIdGuardGuard] },
   { path: 'profile/:id', component: ProfilePageComponent },
   { path: 'authentication', component: AuthenticationPageComponent },
+  { path: 'admin', component: AdminPageComponent, canActivate: [AdminGuard] },
   { path: '', component: HomePageComponent },
   { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
   { path: '**', redirectTo: '', pathMatch: 'full' },

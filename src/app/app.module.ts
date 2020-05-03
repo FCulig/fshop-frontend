@@ -18,7 +18,12 @@ import {
   MatNativeDateModule,
   MatMenuModule,
   MatDialogModule,
-  MatSelectModule
+  MatSelectModule,
+  MatTableModule,
+  MatTooltipModule,
+  MatPaginatorModule,
+  MatBadgeModule,
+  MatCheckboxModule
 } from "@angular/material";
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { MatDatepickerModule } from '@angular/material/datepicker';
@@ -34,6 +39,17 @@ import { UsersProductsPageComponent } from './pages/users-products-page/users-pr
 import { ProductListViewComponent } from './components/product-list-view/product-list-view.component';
 import { ProductListItemComponent } from './components/product-list-item/product-list-item.component';
 import { ProductFormComponent } from './components/modals/product-form/product-form.component';
+import { AdminPageComponent } from './pages/admin-page/admin-page.component';
+import { UserListComponent } from './components/user-list/user-list.component';
+import { CategoryManagerComponent } from './components/category-manager/category-manager.component';
+import { PromotionRequestManagerComponent } from './components/promotion-request-manager/promotion-request-manager.component';
+import { CategoryGroupComponent } from './components/category-group/category-group.component';
+import { LoaderInterceptorService } from './interceptors/loader-interceptor.service';
+import { CategoryGroupFormComponent } from './components/modals/category-group-form/category-group-form.component';
+import { CategoryComponent } from './components/category/category.component';
+import { CategoryFormComponent } from './components/modals/category-form/category-form.component';
+import { UserFormComponent } from './components/modals/user-form/user-form.component';
+import { PromotionFormComponent } from './components/modals/promotion-form/promotion-form.component';
 
 const matFormModules = [
   MatButtonModule,
@@ -44,8 +60,22 @@ const matFormModules = [
   MatSliderModule,
   MatMenuModule,
   MatDialogModule,
-  MatSelectModule
+  MatSelectModule,
+  MatTableModule,
+  MatTooltipModule,
+  MatPaginatorModule,
+  MatBadgeModule,
+  MatCheckboxModule
 ];
+
+const ngxUiLoaderConfig: NgxUiLoaderConfig = {
+  fgsColor: '66fcf1',
+  pbColor: '66fcf1',
+  fgsType: SPINNER.foldingCube,
+  pbDirection: PB_DIRECTION.leftToRight,
+  pbThickness: 5
+};
+
 
 @NgModule({
   declarations: [
@@ -61,6 +91,16 @@ const matFormModules = [
     ProductListViewComponent,
     ProductListItemComponent,
     ProductFormComponent,
+    AdminPageComponent,
+    UserListComponent,
+    CategoryManagerComponent,
+    PromotionRequestManagerComponent,
+    CategoryGroupComponent,
+    CategoryGroupFormComponent,
+    CategoryComponent,
+    CategoryFormComponent,
+    UserFormComponent,
+    PromotionFormComponent,
   ],
   imports: [
     BrowserModule,
@@ -74,7 +114,7 @@ const matFormModules = [
     BrowserAnimationsModule,
     HttpClientModule,
     SimpleNotificationsModule.forRoot(),
-    NgxUiLoaderModule,
+    NgxUiLoaderModule.forRoot(ngxUiLoaderConfig),
   ],
   exports: [matFormModules],
   entryComponents: [ProductFormComponent],
@@ -82,6 +122,7 @@ const matFormModules = [
     MatDatepickerModule,
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: LoaderInterceptorService, multi: true },
   ],
   bootstrap: [AppComponent]
 })

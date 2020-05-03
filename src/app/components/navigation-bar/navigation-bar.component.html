@@ -58,6 +58,7 @@
             <fa-icon [icon]="faUser"></fa-icon>
           </a>
           <div *ngIf="isLoggedIn" class="small-dropdown-content">
+            <a class="dropdown-link" [routerLink]="['/admin']" href="#">Admin panel</a>
             <a class="dropdown-link" [routerLink]="['/dashboard']" href="#">Dashboard</a>
             <a class="dropdown-link" [routerLink]="['/user-products', userId]" href="#">Moji proizvodi</a>
             <a class="dropdown-link" [routerLink]="['/profile', userId]" href="#">Moj profil</a>

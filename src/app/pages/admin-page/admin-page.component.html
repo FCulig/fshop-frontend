@@ -1,0 +1,18 @@
+<h2>Upravljačka ploča</h2>
+<div class="container">
+    <div class="nav-container">
+        <nav>
+            <ul>
+                <li [ngClass]="activeComponentKey == 'USER_LIST' ? 'active': ''" (click)="onMenuClick('USER_LIST')">
+                    Korisnici</li>
+                <li [ngClass]="activeComponentKey == 'CATEGORY_MANAGER' ? 'active': ''"
+                    (click)="onMenuClick('CATEGORY_MANAGER')">Kategorije</li>
+                <li [ngClass]="activeComponentKey == 'PROMOTION_REQUEST_MANAGER' ? 'active': ''"
+                    (click)="onMenuClick('PROMOTION_REQUEST_MANAGER')">Zahtjevi za promociju</li>
+            </ul>
+        </nav>
+    </div>
+    <div class="dynamic-content">
+        <ng-template #container></ng-template>
+    </div>
+</div>

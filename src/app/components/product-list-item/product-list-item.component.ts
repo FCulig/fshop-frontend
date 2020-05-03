@@ -48,14 +48,12 @@ export class ProductListItemComponent implements OnInit {
       this.product = val;
       this.getProductImageUrl();
       this.calculateProductPrice();
-      this.userProductsPage.stopLoader();
       this.notificationService.showSuccessNotification('Uspjeh!', 'Uspješno ste uredili proizvod.')
     });
   }
 
   deleteProduct() {
     this.productService.deleteProduct(this.product.id).subscribe(val => {
-      this.userProductsPage.startLoader();
       this.userProductsPage.getProducts();
     });
   }
@@ -68,7 +66,6 @@ export class ProductListItemComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        this.userProductsPage.startLoader();
         this.productService.editProduct(this.product.id, result).subscribe(val => {
           this.refreshProduct();
         });

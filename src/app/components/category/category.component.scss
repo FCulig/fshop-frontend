@@ -1,0 +1,60 @@
+$black: #0b0c10;
+$lighter-black: #1a1d27;
+$grey: #c5c6c7;
+$flourescent-blue: #66fcf1;
+$flourescent-blue-faded: #66fcf293;
+
+h3 {
+    font-size: 2em;
+    color: $lighter-black;
+    margin-top: 80px;
+}
+
+table {
+    width: 100%;
+
+    td,
+    th {
+        width: 33%;
+    }
+}
+
+.mat-form-field {
+    width: 100%;
+}
+
+button {
+    font-size: 1.2em;
+
+    &.new-button {
+        color: #1a1d27;
+        background-color: $flourescent-blue-faded;
+        margin-top: 15px;
+        font-weight: bold;
+
+        &:hover {
+            background-color: $flourescent-blue;
+        }
+    }
+
+    &.delete-button,
+    &.edit-button {
+        color: white;
+    }
+
+    &.delete-button {
+        background-color: rgb(247, 46, 46);
+        margin-left: 5px;
+        &:hover {
+            background-color: rgb(248, 101, 101);
+        }
+    }
+
+    &.edit-button {
+        background-color: rgb(255, 153, 0);
+
+        &:hover {
+            background-color: rgb(248, 188, 98);
+        }
+    }
+}

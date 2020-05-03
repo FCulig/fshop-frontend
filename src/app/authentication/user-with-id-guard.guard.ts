@@ -9,8 +9,7 @@ import { AuthenticationService } from '../services/authentication.service';
 export class UserWithIdGuardGuard implements CanActivate {
   constructor(
     private router: Router,
-    private authenticationService: AuthenticationService,
-    private route: ActivatedRoute
+    private authenticationService: AuthenticationService
   ) { }
 
   canActivate(

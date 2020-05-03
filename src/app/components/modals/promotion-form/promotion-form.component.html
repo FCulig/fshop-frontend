@@ -1,0 +1,21 @@
+<h1>Promocija u trgovinu</h1>
+<p>Prodajom 10 proizvoda na našoj stranici otvara Vam se mogućnost da Vaš korisnički profil nadogradite na razinu
+    trgovina. Nakon slanja zahtjeva naši administratori će pregledati Vaš profil te će odobriti ili odbiti zahtjev za
+    promociju.
+</p>
+<p>Pogodnosti promocije u trgovinu:</p>
+<ul>
+    <li>Neograničen broj proizvoda za prodaju</li>
+    <li>Neograničene zalihe proizvoda</li>
+    <li>Upravljačka ploča na kojoj možete vidjeti statistiku poslovanja</li>
+</ul>
+
+<form [formGroup]="promotionForm" (ngSubmit)="submit()">
+    <mat-checkbox formControlName="agree">Želim promociju</mat-checkbox>
+
+    <div class="button-container">
+        <button [disabled]="!promotionForm.valid" class="submit-button" type="submit" mat-raised-button
+            color="accent">Pošalji</button>
+        <button (click)="cancel()" class="cancel-button" mat-raised-button>Odustani</button>
+    </div>
+</form>

@@ -1,0 +1,18 @@
+<h1>{{ data ? 'Uređivanje grupe': 'Nova grupa'}}</h1>
+<div class="form-container">
+    <form class="group-form" [formGroup]="groupForm" (ngSubmit)="submit()">
+        <mat-form-field>
+            <mat-label>Naziv grupe</mat-label>
+            <input type="text" name="name" formControlName="name" matInput>
+            <mat-error *ngIf="name.hasError('required')">
+                Naziv grupe je <strong>obavezan</strong>
+            </mat-error>
+        </mat-form-field>
+
+        <div class="button-container">
+            <button [disabled]="!groupForm.valid" class="button" type="submit"
+                mat-raised-button>{{ data ? 'Uredi': 'Dodaj'}}</button>
+            <button id="cancel" class="button" type="button" mat-raised-button (click)="cancel()">Odustani</button>
+        </div>
+    </form>
+</div>

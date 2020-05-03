@@ -19,13 +19,11 @@ export class UsersProductsPageComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private productsService: ProductsService,
-    private ngxService: NgxUiLoaderService,
     private dialog: MatDialog,
     private notificationService: NotificationService
   ) { }
 
   ngOnInit() {
-    this.startLoader();
     this.userId = this.route.snapshot.paramMap.get('id');
     this.getProducts(true);
   }
@@ -34,19 +32,10 @@ export class UsersProductsPageComponent implements OnInit {
     this.productsService.getUsersProducts(this.userId).subscribe(val => {
       this.products = val;
       this.isLoaded = true;
-      this.stopLoader();
       if (!isInitialGet) {
         this.notificationService.showSuccessNotification('Uspjeh!', 'Uspješno ste dodali novi proizvod!');
       }
     });
-  }
-
-  startLoader() {
-    this.ngxService.start();
-  }
-
-  stopLoader() {
-    this.ngxService.stop();
   }
 
   openProductForm() {
@@ -56,7 +45,6 @@ export class UsersProductsPageComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        this.startLoader();
         this.productsService.newProduct(result).subscribe(val => {
           this.getProducts();
         });

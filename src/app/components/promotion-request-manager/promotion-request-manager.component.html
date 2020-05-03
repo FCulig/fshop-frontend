@@ -1,0 +1,72 @@
+<div class="container">
+    <h3>Grupe kategorija</h3>
+    <div class="table-container">
+        <mat-form-field>
+            <mat-label>Pretraga</mat-label>
+            <input matInput (keyup)="applyFilter($event)">
+        </mat-form-field>
+
+        <table mat-table [dataSource]="requests" multiTemplateDataRows class="mat-elevation-z8">
+            <ng-container matColumnDef="id">
+                <th mat-header-cell *matHeaderCellDef>ID</th>
+                <td mat-cell *matCellDef="let element">{{element.id}}</td>
+            </ng-container>
+
+            <ng-container matColumnDef="username">
+                <th mat-header-cell *matHeaderCellDef>Korisničko ime</th>
+                <td mat-cell *matCellDef="let element">{{element.user.username}}</td>
+            </ng-container>
+
+            <ng-container matColumnDef="status">
+                <th mat-header-cell *matHeaderCellDef>Status</th>
+                <td mat-cell *matCellDef="let element">
+                    <fa-icon class="pending" *ngIf="element.result != 0 && element.result != 1"
+                        [icon]="faHourglassHalf"></fa-icon>
+                    <fa-icon class="approve" *ngIf="element.result == 1" [icon]="faCheck"></fa-icon>
+                    <fa-icon class="decline" *ngIf="element.result == 0" [icon]="faTimes"></fa-icon>
+                </td>
+            </ng-container>
+
+            <ng-container matColumnDef="expandedDetail">
+                <td mat-cell *matCellDef="let element" [attr.colspan]="displayedColumns.length">
+                    <div class="example-element-detail"
+                        [@detailExpand]="element == expandedElement ? 'expanded' : 'collapsed'">
+                        <div class="expanded-detail">
+                            <div class="inline-details">
+                                <div class="info-container">
+                                    <p><b>{{element.user.first_name}} {{element.user.last_name}}</b></p>
+                                    <p><b>Korisničko ime:</b> {{element.user.username}}</p>
+                                    <p><b>E-mail:</b> {{element.user.email}} </p>
+                                    <!--
+                                        //TODO:
+                                    -->
+                                    <p>Ukupan broj prodanih proizvoda: </p>
+                                </div>
+                                <div class="image-container">
+                                    <img [src]="getProfileImageUrl(element.user.profile_img_url)" />
+                                </div>
+                            </div>
+                            <div *ngIf="element.result != 0 && element.result != 1" class="button-container">
+                                <button mat-raised-button class="approve-button" (click)="approve(element.id)">
+                                    <fa-icon [icon]="faCheck"></fa-icon> Prihvati
+                                </button>
+                                <button mat-raised-button class="decline-button" (click)="decline(element.id)">
+                                    <fa-icon [icon]="faTimes"></fa-icon> Odbij
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let element; columns: displayedColumns;" class="example-element-row"
+                [class.example-expanded-row]="expandedElement === element"
+                (click)="expandedElement = expandedElement === element ? null : element">
+            </tr>
+            <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="example-detail-row"></tr>
+        </table>
+
+        <mat-paginator [pageSizeOptions]="[10]"></mat-paginator>
+    </div>
+</div>

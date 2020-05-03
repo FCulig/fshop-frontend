@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { LoaderService } from 'src/app/services/loader.service';
+import { NgxUiLoaderService } from 'ngx-ui-loader';
 
 @Component({
   selector: 'app-loader',
@@ -7,7 +9,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoaderComponent implements OnInit {
 
-  constructor() { }
+  isFirstFalse = true;
+
+  constructor(private loaderService: LoaderService, private ngxService: NgxUiLoaderService) {
+    this.loaderService.isLoading.subscribe((v) => {
+      if (v === false) {
+        if (!this.isFirstFalse) {
+          ngxService.stop();
+        } else {
+          this.isFirstFalse = false;
+        }
+      } else {
+        ngxService.start();
+      }
+    });
+  }
 
   ngOnInit() {
   }

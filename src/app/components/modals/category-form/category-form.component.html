@@ -1,0 +1,30 @@
+<h1>{{ data ? 'Uređivanje kategorije': 'Nova kategorija'}}</h1>
+<div class="form-container">
+    <form class="category-form" [formGroup]="categoryForm" (ngSubmit)="submit()">
+        <mat-form-field>
+            <mat-label>Naziv kategoije</mat-label>
+            <input type="text" name="name" formControlName="name" matInput>
+            <mat-error *ngIf="name.hasError('required')">
+                Naziv kategorije je <strong>obavezan</strong>
+            </mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label>Grupa</mat-label>
+            <mat-select name="group_id" formControlName="group_id">
+                <mat-option *ngFor="let gr of groups" [value]="gr.id">
+                    {{gr.name}}
+                </mat-option>
+            </mat-select>
+            <mat-error *ngIf="group_id.hasError('required')">
+                <strong>Obavezno </strong> morate odabrati grupu kojoj pripada kategorija
+            </mat-error>
+        </mat-form-field>
+
+        <div class="button-container">
+            <button [disabled]="!categoryForm.valid" class="button" type="submit"
+                mat-raised-button>{{ data ? 'Uredi': 'Dodaj'}}</button>
+            <button id="cancel" class="button" type="button" mat-raised-button (click)="cancel()">Odustani</button>
+        </div>
+    </form>
+</div>

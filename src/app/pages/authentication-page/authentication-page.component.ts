@@ -73,7 +73,7 @@ export class AuthenticationPageComponent implements OnInit {
   }
 
   onFileChanged(event) {
-    this.selectedFile = event.target.files[0]
+    this.selectedFile = event.target.files[0];
   }
 
   register() {

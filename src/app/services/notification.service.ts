@@ -27,4 +27,14 @@ export class NotificationService {
       clickIconToClose: true
     });
   }
+
+  showWarningNotification(title: string, message: string) {
+    this.notification.warn(title, message, {
+      timeOut: 8000,
+      showProgressBar: false,
+      pauseOnHover: true,
+      clickToClose: true,
+      clickIconToClose: true
+    });
+  }
 }

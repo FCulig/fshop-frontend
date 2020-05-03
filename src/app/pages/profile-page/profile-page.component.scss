@@ -4,24 +4,25 @@ $grey: #c5c6c7;
 $flourescent-blue: #66fcf1;
 $flourescent-blue-faded: #66fcf293;
 
-.body, .header {
+.body,
+.header {
     background-color: $lighter-black;
     display: grid;
     grid-template-columns: 2.5fr 8fr;
 }
 
-.header{
-    .profile-image-conainer{
+.header {
+    .profile-image-conainer {
         padding: 15px;
-        img{
+        img {
             width: 100%;
         }
     }
 
-    .username-container{
+    .username-container {
         display: flex;
         align-items: flex-end;
-        h2{
+        h2 {
             color: $flourescent-blue;
             margin-left: 15px;
             margin-bottom: 15px;
@@ -31,7 +32,7 @@ $flourescent-blue-faded: #66fcf293;
     }
 }
 
-.user-details {
+.table-container {
     background-color: $black;
     color: $flourescent-blue;
     padding: 10px;
@@ -52,7 +53,7 @@ $flourescent-blue-faded: #66fcf293;
         margin: 25px 5px 10px 5px;
         font-size: 1.1em;
 
-        &:hover{
+        &:hover {
             background-color: $flourescent-blue-faded;
         }
     }
@@ -62,4 +63,5 @@ $flourescent-blue-faded: #66fcf293;
     background-color: #fff;
     margin-left: 15px;
     border-radius: 5px;
+    min-height: 100vh;
 }

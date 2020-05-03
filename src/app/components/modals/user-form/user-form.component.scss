@@ -1,0 +1,25 @@
+mat-form-field {
+    width: 85%;
+}
+
+.inline-fields mat-form-field {
+    width: 40%;
+    margin-right: 5%;
+}
+
+form {
+    margin-top: 40px;
+
+    .button-container {
+        margin-top: 30px;
+
+        .cancel-button {
+            margin-left: 10px;
+        }
+    }
+
+    img {
+        width: 30%;
+        margin: 15px 0;
+    }
+}
