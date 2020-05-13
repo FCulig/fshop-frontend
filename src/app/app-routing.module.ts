@@ -9,11 +9,21 @@ import { UsersProductsPageComponent } from './pages/users-products-page/users-pr
 import { UserWithIdGuardGuard } from './authentication/user-with-id-guard.guard';
 import { AdminPageComponent } from './pages/admin-page/admin-page.component';
 import { AdminGuard } from './authentication/admin.guard';
+import { ProductPageComponent } from './pages/product-page/product-page.component';
+import { CartSummaryComponent } from './pages/cart-summary/cart-summary.component';
+import { FinishShoppingPageComponent } from './pages/finish-shopping-page/finish-shopping-page.component';
+import { ShoppingHistoryPageComponent } from './pages/shopping-history-page/shopping-history-page.component';
+import { SellingPageComponent } from './pages/selling-page/selling-page.component';
 
 
 const routes: Routes = [
+  { path: 'selling/:id', component: SellingPageComponent, canActivate: [UserWithIdGuardGuard] },
+  { path: 'shopping-history/:id', component: ShoppingHistoryPageComponent, canActivate: [UserWithIdGuardGuard] },
+  { path: 'finish-shopping/:id', component: FinishShoppingPageComponent },
   { path: 'user-products/:id', component: UsersProductsPageComponent, canActivate: [UserWithIdGuardGuard] },
   { path: 'profile/:id', component: ProfilePageComponent },
+  { path: 'cart-summary/:id', component: CartSummaryComponent, canActivate: [AuthGuard] },
+  { path: 'product/:id', component: ProductPageComponent },
   { path: 'authentication', component: AuthenticationPageComponent },
   { path: 'admin', component: AdminPageComponent, canActivate: [AdminGuard] },
   { path: '', component: HomePageComponent },

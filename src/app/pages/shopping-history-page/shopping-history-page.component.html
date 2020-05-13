@@ -1,0 +1,25 @@
+<div class="container">
+    <h1>Povijest kupnje</h1>
+
+    <div>
+        <mat-form-field class="filter">
+            <mat-label>Vrsta transakcije</mat-label>
+            <select (change)="onFilterChange($event)" matNativeControl>
+                <option value="0">Sve</option>
+                <option value="1">Naručeno</option>
+                <option value="3">Poslano</option>
+                <option value="4">Otkazano</option>
+            </select>
+        </mat-form-field>
+    </div>
+
+    <div class="white">
+        <div *ngIf="transactions?.length > 0" class="transaction-list">
+            <app-transaction-item (refreshTransactions)="currentOption == 0 ? getAllTransactions() : getTransactionsWithStatus(currentOption)"
+                *ngFor="let item of transactions" [transaction]="item"></app-transaction-item>
+        </div>
+        <div *ngIf="transactions?.length == 0" class="no-transactions">
+            Nema transakcija!
+        </div>
+    </div>
+</div>

@@ -43,23 +43,55 @@
   <nav class="right-side">
     <ul class="navigation">
       <li>
-        <div class="dropdown" style="float:right;">
-          <a href="">
+        <div class="small-dropdown" style="float:right;">
+          <a>
             <fa-icon [icon]="faShoppingCart"></fa-icon>
           </a>
-          <div class="dropdown-content"></div>
+          <div class="small-dropdown-content" id="cart-dropdown">
+            <div *ngIf="cart?.items?.length == 0" class="no-items-message">
+              <p>Trenutno nemate proizvoda u košarici.</p>
+            </div>
+            <div *ngIf="!isLoggedIn" class="not-authenticated-message">
+              <p>Da bi mogli koristiti košaricu morate se prijaviti.</p>
+            </div>
+            <div *ngIf="cart?.items?.length > 0" class="cart-item">
+              <div *ngFor="let item of cart.items" class="item">
+                <div class="image">
+                  <img [src]="getProductImage(item.product_img_id)" />
+                </div>
+                <div class="name">
+                  <a class="product-link" [routerLink]="['/product', item.product_id]"
+                    href="#">{{item.product_name}}</a>
+                  <div class="price">
+                    {{item.quantity}} x {{item.price }} kn
+                  </div>
+                </div>
+                <div class="delete">
+                  <button (click)="removeFromCart(item.id)">
+                    <fa-icon [icon]="faTimes"></fa-icon>
+                  </button>
+                </div>
+              </div>
+              <div class="cart-summary">
+                <p>Ukupno: {{ getTotalPrice() | number:'1.2-2' }} kn</p>
+                <button [routerLink]="['/cart-summary', cart.id]">Završite kupnju</button>
+              </div>
+            </div>
+          </div>
         </div>
       </li>
 
       <li>
         <div class="small-dropdown" style="float:right;">
-          <a href="">
+          <a>
             <span *ngIf="isLoggedIn">{{username}}</span>
             <fa-icon [icon]="faUser"></fa-icon>
           </a>
           <div *ngIf="isLoggedIn" class="small-dropdown-content">
             <a class="dropdown-link" [routerLink]="['/admin']" href="#">Admin panel</a>
             <a class="dropdown-link" [routerLink]="['/dashboard']" href="#">Dashboard</a>
+            <a class="dropdown-link" [routerLink]="['/shopping-history', userId]" href="#">Povijest kupnje</a>
+            <a class="dropdown-link" [routerLink]="['/selling', userId]" href="#">Narudžbe</a>
             <a class="dropdown-link" [routerLink]="['/user-products', userId]" href="#">Moji proizvodi</a>
             <a class="dropdown-link" [routerLink]="['/profile', userId]" href="#">Moj profil</a>
             <a class="dropdown-link" (click)="logout()">Odjava</a>
@@ -69,7 +101,8 @@
               <a [routerLink]="['/authentication']">Prijavite se</a>
             </button>
             <small>Nemate račun?
-              <a id="register-link" [routerLink]="['/authentication']" [queryParams]="{ type: 'register'}">Registrirajte se!</a>
+              <a id="register-link" [routerLink]="['/authentication']" [queryParams]="{ type: 'register'}">Registrirajte
+                se!</a>
             </small>
           </div>
         </div>

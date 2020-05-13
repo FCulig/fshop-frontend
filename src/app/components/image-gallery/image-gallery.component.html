@@ -1,0 +1,10 @@
+<div class="container">
+    <div class="active-img">
+        <img [src]="activeImg">
+    </div>
+    <div class="all-images">
+        <div *ngFor="let img of imgUrls" class="img-container">
+            <img [class.active]="img == activeImg" (click)="setActiveImage(img)" [src]="img">
+        </div>
+    </div>
+</div>

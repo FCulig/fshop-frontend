@@ -28,6 +28,16 @@ $flourescent-blue-faded: #66fcf293;
         h3 {
             font-size: 2.5em;
             display: inline-block;
+
+            a{
+                color: white;
+                text-decoration: none;
+                
+                &:hover{
+                    text-decoration: underline;
+                }
+            }
+
         }
 
         .options .options-button{

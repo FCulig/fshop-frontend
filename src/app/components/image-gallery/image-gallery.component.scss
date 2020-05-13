@@ -1,0 +1,38 @@
+$black: #0b0c10;
+$lighter-black: #1a1d27;
+$grey: #c5c6c7;
+$flourescent-blue: #66fcf1;
+$flourescent-blue-faded: #66fcf293;
+
+.selected{
+    border: 1px solid $flourescent-blue;
+}
+
+.container {
+    .active-img {
+        img {
+            width: 100%;
+        }
+    }
+
+    .all-images {
+        display: grid;
+        grid-template-columns: repeat(4, 25%);
+
+        .img-container{
+            padding: 5px;
+
+            img{
+                width: 100%;
+
+                &:hover{
+                    cursor: pointer;
+                }
+
+                &.active{
+                    border: 2px solid $flourescent-blue;
+                }
+            }
+        }
+    }
+}

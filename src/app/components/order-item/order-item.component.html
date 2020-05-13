@@ -1,0 +1,29 @@
+<div class="container">
+    <div class="image">
+        <img [src]="getProductImg()" />
+    </div>
+    <div class="details">
+        <a class="product-link" [routerLink]="['/product', order.product.id]" href="#">{{order.product.name}}</a>
+        <div class="price">
+            {{order.quantity}} x {{order.product.price}} kn
+        </div>
+        <div class="status">
+            Status: <span class="status-indicator"
+                [ngClass]="{'ordered': order.status.id == 1, 'shipped': order.status.id == 3}">{{order.status.name}}</span>
+        </div>
+        <div class="address">
+            {{order.address}}, {{order.city}} {{order.zip_code}}, {{order.country}}
+        </div>
+    </div>
+    <div *ngIf="order.status.id==1" class="options">
+        <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+            <mat-icon>more_vert</mat-icon>
+        </button>
+        <mat-menu #menu="matMenu">
+            <button (click)="send()" mat-menu-item>
+                <span>Označite kao poslano</span>
+            </button>
+        </mat-menu>
+    </div>
+</div>
+<hr>

@@ -1,0 +1,15 @@
+<div class="container">
+    <div *ngIf="cart && cart.items.length > 0">
+        <div class="cart-items">
+            <app-cart-item (emitRefreshCart)="getCart()" *ngFor="let item of cart.items" [item]="item"></app-cart-item>
+        </div>
+        <div class="summary">
+            <p>Ukupno: {{ getTotalPrice() | number:'1.2-2'}} kn</p>
+            <button [routerLink]="['/finish-shopping', cart.id]" mat-raised-button>Završite kupovinu</button>
+        </div>
+    </div>
+
+    <div class="no-items" *ngIf="cart?.items?.length == 0">
+        Nema proizvoda u košarici!
+    </div>
+</div>

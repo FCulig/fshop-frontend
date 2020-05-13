@@ -1,0 +1,44 @@
+$black: #0b0c10;
+$lighter-black: #1a1d27;
+$grey: #c5c6c7;
+$flourescent-blue: #66fcf1;
+$flourescent-blue-faded: #66fcf293;
+
+.container {
+    display: grid;
+    grid-template-columns: 15% 42.5% 42.5%;
+
+    img {
+        width: 100%;
+    }
+
+    .name-price {
+        padding: 10px;
+
+        a {
+            font-size: 2em;
+            text-decoration: none;
+
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+
+        .price {
+            margin-top: 10px;
+        }
+    }
+
+    .delete button {
+        border: 0;
+        background-color: white;
+        color: $grey;
+        float: right;
+        font-size: 1.7em;
+        margin-right: 10px;
+        &:hover {
+            color: $black;
+            cursor: pointer;
+        }
+    }
+}

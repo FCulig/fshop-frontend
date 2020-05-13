@@ -27,7 +27,7 @@
             </mat-form-field>
 
             <mat-form-field>
-                <mat-label>Cijena proizvoda €</mat-label>
+                <mat-label>Cijena proizvoda: </mat-label>
                 <input name="price" formControlName="price" type="number" matInput>
                 <mat-error *ngIf="price.hasError('required')">
                     Cijena proizvoda je <strong>obavezna</strong>
@@ -47,7 +47,7 @@
                 </button>
             </div>
             <div class="currency-values">
-                Cijena: {{price.value | currency:'EUR'}} ({{price.value * 7.56 | number:'1.2-2'}} kn)
+                Cijena: {{price.value | number:'1.2-2'}} kn
             </div>
         </div>
 

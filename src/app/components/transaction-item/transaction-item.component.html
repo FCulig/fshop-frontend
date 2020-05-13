@@ -1,0 +1,27 @@
+<div class="container">
+    <div class="image">
+        <img [src]="getProductImg()" />
+    </div>
+    <div class="details">
+        <a class="product-link" [routerLink]="['/product', transaction.product.id]"
+            href="#">{{transaction.product.name}}</a>
+        <div class="price">
+            {{transaction.quantity}} x {{transaction.product.price}} kn
+        </div>
+        <div class="status">
+            Status: <span class="status-indicator"
+                [ngClass]="{'ordered': transaction.status.id == 1, 'shipped': transaction.status.id == 3, 'canceled': transaction.status.id == 4}">{{transaction.status.name}}</span>
+        </div>
+    </div>
+    <div *ngIf="transaction.status.id==1" class="options">
+        <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+            <mat-icon>more_vert</mat-icon>
+        </button>
+        <mat-menu #menu="matMenu">
+            <button (click)="cancel()" mat-menu-item>
+                <span>Otkažite narudžbu</span>
+            </button>
+        </mat-menu>
+    </div>
+</div>
+<hr>

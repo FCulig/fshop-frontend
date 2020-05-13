@@ -12,6 +12,6 @@ export class RoleService {
   constructor(private http: HttpClient) { }
 
   getRoleWithId(roleId): Observable<any> {
-    return this.http.get(Endpoints.BASE_URL + Endpoints.ROLES + '/' + roleId);
+    return this.http.get(Endpoints.BASE_URL + Endpoints.ROLES + roleId);
   }
 }

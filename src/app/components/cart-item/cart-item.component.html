@@ -1,0 +1,16 @@
+<div class="container">
+    <div class="image">
+        <img [src]="getProductImage(item.product_img_id)" />
+    </div>
+    <div class="name-price">
+        <a class="product-link" [routerLink]="['/product', item.product_id]" href="#">{{item.product_name}}</a>
+        <div class="price">
+            {{item.quantity}} x {{item.price}} kn
+        </div>
+    </div>
+    <div class="delete">
+        <button (click)="removeFromCart()">
+            <fa-icon [icon]="faTimes"></fa-icon>
+        </button>
+    </div>
+</div>

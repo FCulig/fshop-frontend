@@ -1,0 +1,26 @@
+<div class="container">
+    <h1>Narudžbe</h1>
+
+    <mat-form-field class="filter">
+        <mat-label>Vrsta transakcije</mat-label>
+        <select (change)="onFilterChange($event)" matNativeControl>
+            <option value="0">Sve</option>
+            <option value="1">Naručeno</option>
+            <option value="3">Poslano</option>
+        </select>
+    </mat-form-field>
+
+    <div *ngIf="orders?.length > 0">
+        <div class="content">
+            <div *ngFor="let item of orders">
+                <app-order-item *ngIf="item.id" [order]="item"
+                    (refreshOrders)="currentOption == 0 ? getOrders() : getOrdersWithStatus(currentOption)">
+                </app-order-item>
+            </div>
+        </div>
+    </div>
+
+    <div *ngIf="orders?.length == 0 || !orders" class="content">
+        Nema narudžbi
+    </div>
+</div>

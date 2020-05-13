@@ -23,7 +23,9 @@ import {
   MatTooltipModule,
   MatPaginatorModule,
   MatBadgeModule,
-  MatCheckboxModule
+  MatCheckboxModule,
+  MatIcon,
+  MatIconModule
 } from "@angular/material";
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { MatDatepickerModule } from '@angular/material/datepicker';
@@ -50,6 +52,15 @@ import { CategoryComponent } from './components/category/category.component';
 import { CategoryFormComponent } from './components/modals/category-form/category-form.component';
 import { UserFormComponent } from './components/modals/user-form/user-form.component';
 import { PromotionFormComponent } from './components/modals/promotion-form/promotion-form.component';
+import { ProductPageComponent } from './pages/product-page/product-page.component';
+import { ImageGalleryComponent } from './components/image-gallery/image-gallery.component';
+import { CartSummaryComponent } from './pages/cart-summary/cart-summary.component';
+import { CartItemComponent } from './components/cart-item/cart-item.component';
+import { FinishShoppingPageComponent } from './pages/finish-shopping-page/finish-shopping-page.component';
+import { ShoppingHistoryPageComponent } from './pages/shopping-history-page/shopping-history-page.component';
+import { TransactionItemComponent } from './components/transaction-item/transaction-item.component';
+import { SellingPageComponent } from './pages/selling-page/selling-page.component';
+import { OrderItemComponent } from './components/order-item/order-item.component';
 
 const matFormModules = [
   MatButtonModule,
@@ -65,7 +76,8 @@ const matFormModules = [
   MatTooltipModule,
   MatPaginatorModule,
   MatBadgeModule,
-  MatCheckboxModule
+  MatCheckboxModule,
+  MatIconModule
 ];
 
 const ngxUiLoaderConfig: NgxUiLoaderConfig = {
@@ -101,6 +113,15 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
     CategoryFormComponent,
     UserFormComponent,
     PromotionFormComponent,
+    ProductPageComponent,
+    ImageGalleryComponent,
+    CartSummaryComponent,
+    CartItemComponent,
+    FinishShoppingPageComponent,
+    ShoppingHistoryPageComponent,
+    TransactionItemComponent,
+    SellingPageComponent,
+    OrderItemComponent,
   ],
   imports: [
     BrowserModule,
@@ -120,6 +141,7 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
   entryComponents: [ProductFormComponent],
   providers: [
     MatDatepickerModule,
+    NavigationBarComponent,
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: LoaderInterceptorService, multi: true },

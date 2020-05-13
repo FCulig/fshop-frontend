@@ -1,0 +1,39 @@
+<div *ngIf="product" class="container">
+    <h1>{{product.name}}</h1>
+    <div class="product-container">
+        <div class="product-display">
+            <div class="gallery-container">
+                <app-image-gallery [imgUrls]="imgUrls"></app-image-gallery>
+            </div>
+            <div class="product-details-container">
+                <div class="product-details">
+                    <div class="product-description">
+                        <p>{{product.description}}</p>
+                    </div>
+                    <div class="buying-options">
+                        <div class="price">
+                            <p>{{product.price}} kn</p>
+                        </div>
+                        <div class="quantity-form">
+                            <div class="form">
+                                <form [formGroup]="quantityForm">
+                                    <mat-label>Količina:</mat-label>
+                                    <input name="quantity" formControlName="quantity" matInput type="number">
+                                    <mat-error *ngIf="quantity.hasError('required')">
+                                        Količina je <strong>obavezna</strong>
+                                    </mat-error>
+                                </form>
+                            </div>
+                            <div class="quantity">Raspoloživo: {{product.quantity}}</div>
+                        </div>
+                        <div class="button-container">
+                            <button [disabled]="checkQuantity()" (click)="buyProduct()" class="buy-button" mat-raised-button>Kupi</button>
+                            <button [disabled]="checkQuantity()" (click)="addToCart()" class="cart-button" mat-raised-button>Dodaj u
+                                košaricu</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

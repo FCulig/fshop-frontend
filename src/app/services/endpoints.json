@@ -2,8 +2,8 @@
     "BASE_URL": "http://localhost:8000/api",
     "REGISTER": "/register",
     "LOGIN": "/login",
-    "USERS": "/users",
-    "ROLES": "/roles",
+    "USERS": "/users/",
+    "ROLES": "/roles/",
     "PROFILE_PICTURE": "/profilePicture/",
     "PRODUCT_IMAGE": "/productImage/",
     "PRODUCTS": "/product/",
@@ -14,5 +14,11 @@
     "CATEGORY_GROUP": "/catgroup/",
     "PROMOTION_REQUEST": "/promotion/",
     "APPROVE": "/approve/",
-    "DECLINE": "/decline/"
+    "DECLINE": "/decline/",
+    "CART": "/cart/",
+    "CART_ITEM": "/cart-item/",
+    "TRANSACTIONS": "/transactions/",
+    "CANCEL": "/cancel/",
+    "ORDERS": "/orders/",
+    "SHIP": "/ship/"
 }

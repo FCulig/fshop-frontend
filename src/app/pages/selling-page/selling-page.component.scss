@@ -1,0 +1,36 @@
+$black: #0b0c10;
+$lighter-black: #1a1d27;
+$grey: #c5c6c7;
+$flourescent-blue: #66fcf1;
+$flourescent-blue-faded: #66fcf293;
+
+.container {
+    padding-top: 15px;
+    min-height: 100vh;
+    background-color: $lighter-black;
+    padding-bottom: 15px;
+
+    h1 {
+        font-size: 3em;
+        margin-bottom: 15px;
+        color: $flourescent-blue;
+    }
+
+    .content {
+        background-color: white;
+        padding: 15px;
+        border-radius: 5px;
+    }
+
+    .white,
+    .filter {
+        background-color: white;
+        border-radius: 5px;
+        padding: 15px;
+        margin-bottom: 15px;
+    }
+
+    .filter {
+        padding-bottom: 0;
+    }
+}

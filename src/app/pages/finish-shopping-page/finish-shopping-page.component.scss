@@ -1,0 +1,52 @@
+$black: #0b0c10;
+$lighter-black: #1a1d27;
+$grey: #c5c6c7;
+$flourescent-blue: #66fcf1;
+$flourescent-blue-faded: #66fcf293;
+
+.container {
+    padding-top: 15px;
+    min-height: 100vh;
+    background-color: $lighter-black;
+
+    .form {
+        border-radius: 5px;
+        background-color: white;
+        padding: 15px;
+
+        h1 {
+            font-size: 3em;
+            margin-bottom: 15px;
+        }
+
+        mat-form-field{
+            width: 40%;
+        }
+
+        .inline {
+            display: grid;
+            grid-template-columns: 50% 50%;
+
+            mat-form-field {
+                width: 80%;
+            }
+        }
+
+        .submit-container {
+            padding: 15px;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            button {
+                width: 60%;
+                background-color: $flourescent-blue-faded;
+
+                &:hover {
+                    background-color: $flourescent-blue;
+                }
+            }
+        }
+    }
+}

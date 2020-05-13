@@ -1,0 +1,62 @@
+<div class="container">
+    <div class="form">
+        <h1>Podatci o kupcu:</h1>
+        <form [formGroup]="transactionForm" (ngSubmit)="submit()">
+            <div class="inline">
+                <mat-form-field>
+                    <mat-label>Ime</mat-label>
+                    <input type="text" name="first_name" formControlName="first_name" matInput>
+                    <mat-error *ngIf="first_name.hasError('required')">
+                        Ime je <strong>obavezno</strong>
+                    </mat-error>
+                </mat-form-field>
+
+                <mat-form-field>
+                    <mat-label>Prezime</mat-label>
+                    <input type="text" name="last_name" formControlName="last_name" matInput>
+                    <mat-error *ngIf="last_name.hasError('required')">
+                        Prezime <strong>obavezno</strong>
+                    </mat-error>
+                </mat-form-field>
+            </div>
+
+            <mat-form-field>
+                <mat-label>Adresa</mat-label>
+                <input type="text" name="address" formControlName="address" matInput>
+                <mat-error *ngIf="address.hasError('required')">
+                    Adresa <strong>obavezna</strong>
+                </mat-error>
+            </mat-form-field>
+
+            <div class="inline">
+                <mat-form-field>
+                    <mat-label>Grad</mat-label>
+                    <input type="text" name="city" formControlName="city" matInput>
+                    <mat-error *ngIf="city.hasError('required')">
+                        Grad <strong>obavezan</strong>
+                    </mat-error>
+                </mat-form-field>
+
+                <mat-form-field>
+                    <mat-label>Poštanski broj</mat-label>
+                    <input type="text" name="zip_code" formControlName="zip_code" matInput>
+                    <mat-error *ngIf="zip_code.hasError('required')">
+                        Poštanski broj <strong>obavezan</strong>
+                    </mat-error>
+                </mat-form-field>
+            </div>
+
+            <mat-form-field>
+                <mat-label>Država</mat-label>
+                <input type="text" name="country" formControlName="country" matInput>
+                <mat-error *ngIf="country.hasError('required')">
+                    Država <strong>obavezna</strong>
+                </mat-error>
+            </mat-form-field>
+
+            <div class="submit-container">
+                <button [disabled]="!transactionForm.valid" type="submit" mat-raised-button>Kupi</button>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,48 @@
+$black: #0b0c10;
+$lighter-black: #1a1d27;
+$grey: #c5c6c7;
+$flourescent-blue: #66fcf1;
+$flourescent-blue-faded: #66fcf293;
+
+.summary,
+.cart-items {
+    margin-top: 15px;
+    padding: 5px;
+    border-radius: 5px;
+    background-color: white;
+}
+
+p {
+    //vertical-align: middle;
+    display: inline-block;
+    margin-right: 15px;
+}
+
+.summary {
+    float: right;
+    padding: 10px;
+}
+
+button {
+    background-color: $flourescent-blue-faded;
+
+    &:hover {
+        background-color: $flourescent-blue;
+    }
+}
+
+.container {
+    padding-top: 15px;
+    min-height: 100vh;
+    background-color: $lighter-black;
+}
+
+.no-items {
+    background-color: white;
+    margin: auto;
+    font-size: 2em;
+    padding: 10px;
+    border-radius: 15px;
+    width: 80%;
+    text-align: center;
+}
