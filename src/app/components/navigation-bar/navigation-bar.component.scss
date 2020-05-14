@@ -3,6 +3,14 @@ $grey: #c5c6c7;
 $flourescent-blue: #66fcf1;
 $flourescent-blue-faded: #66fcf293;
 
+.mat-badge-medium.mat-badge-above .mat-badge-content {
+  top: -3px;
+}
+
+.small-dropdown-content .mat-badge-medium.mat-badge-above .mat-badge-content {
+  left: 90px;
+}
+
 nav {
   font-size: 12pt;
   font-family: Comfortaa;

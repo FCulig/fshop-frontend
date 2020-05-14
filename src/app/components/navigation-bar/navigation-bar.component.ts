@@ -6,6 +6,8 @@ import { NotificationService } from 'src/app/services/notification.service';
 import { CartService } from 'src/app/services/cart.service';
 import { ImageService } from 'src/app/services/image.service';
 import { NavigationProductService } from 'src/app/services/navigation-product.service';
+import { TransactionService } from 'src/app/services/transaction.service';
+import { NavigationLogoutService } from 'src/app/services/navigation-logout.service';
 
 @Component({
   selector: 'app-navigation-bar',
@@ -25,6 +27,8 @@ export class NavigationBarComponent implements OnInit {
   username: string;
   userId: number;
   cart;
+  numberPendingOrders;
+  roleId;
 
   constructor(
     private authenticationService: AuthenticationService,
@@ -32,7 +36,9 @@ export class NavigationBarComponent implements OnInit {
     private notificationService: NotificationService,
     private cartService: CartService,
     private imageService: ImageService,
-    private navigationProductService: NavigationProductService
+    private navigationProductService: NavigationProductService,
+    private navigationLogoutService: NavigationLogoutService,
+    private transactionService: TransactionService
   ) { }
 
   ngOnInit() {
@@ -41,9 +47,24 @@ export class NavigationBarComponent implements OnInit {
     this.navigationProductService.refresh$.subscribe(val => {
       this.getCart();
     });
+    this.navigationLogoutService.logout$.subscribe(val => {
+      this.logout();
+    });
+    this.getOrders();
+  }
+
+  getOrders() {
+    if (this.isLoggedIn) {
+      this.transactionService.getUsersOrdersWithStatus(1, this.userId).subscribe(val => {
+        this.numberPendingOrders = val.length;
+      });
+    }
   }
 
   logout() {
+    this.numberPendingOrders = null;
+    this.cart = null;
+    this.roleId = null;
     this.authenticationService.logout();
     this.router.navigate(['/']);
     this.notificationService.showSuccessNotification('Uspješno ste se odjavili!', '');
@@ -55,9 +76,10 @@ export class NavigationBarComponent implements OnInit {
         this.isLoggedIn = true;
         this.username = val.user.username;
         this.userId = val.user.id;
-        console.log(this.userId);
+        this.roleId = val.user.role_id;
         this.getCart();
       } else {
+        this.roleId = null;
         this.isLoggedIn = false;
         this.username = null;
         this.userId = null;
@@ -66,9 +88,11 @@ export class NavigationBarComponent implements OnInit {
   }
 
   getCart() {
-    this.cartService.getUsersCart(this.authenticationService.currentUserValue.user.id).subscribe(val => {
-      this.cart = val;
-    });
+    if (this.isLoggedIn) {
+      this.cartService.getUsersCart(this.authenticationService.currentUserValue.user.id).subscribe(val => {
+        this.cart = val;
+      });
+    }
   }
 
   removeFromCart(itemId) {

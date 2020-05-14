@@ -45,6 +45,4 @@ export class SellingPageComponent implements OnInit {
       }
     }
   }
-
-  //TODO: Navigacija bubble kolko narudžbi ima i za cart kolko itema
 }

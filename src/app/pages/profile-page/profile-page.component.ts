@@ -27,7 +27,7 @@ export class ProfilePageComponent implements OnInit {
 
   userId;
   user;
-  isUpgradeable = true; //TODO: false ako je vec poslan
+  isUpgradeable = false;
   isUsersProfile = false;
   profilePictureUrl = 'http://localhost:8000/api/profilePicture/default.png';
 
@@ -43,9 +43,6 @@ export class ProfilePageComponent implements OnInit {
 
   ngOnInit() {
     this.userId = this.route.snapshot.paramMap.get('id');
-    if (this.userId == this.authenticationService.currentUserValue.user.id) {
-      this.isUsersProfile = true;
-    }
     this.getUser();
   }
 
@@ -55,6 +52,15 @@ export class ProfilePageComponent implements OnInit {
       this.profilePictureUrl = Endpoints.BASE_URL + Endpoints.PROFILE_PICTURE + val.profile_img_url;
       console.log(val);
       this.getRole(this.user.role_id);
+
+      if (this.userId == this.authenticationService.currentUserValue.user.id) {
+        this.isUsersProfile = true;
+        if (this.user.role_id == 3) {
+          this.promotionRequestService.isUserElegableForPromotion(this.userId).subscribe(val => {
+            this.isUpgradeable = val;
+          });
+        }
+      }
     });
   }
 
@@ -70,8 +76,6 @@ export class ProfilePageComponent implements OnInit {
           if (val.id) {
             this.getUser();
             this.notificationService.showSuccessNotification('Uspjeh!', 'Uspješno ste promijenili vaše podatke!');
-          } else {
-            //TODO: poruke za greške
           }
         });
       }

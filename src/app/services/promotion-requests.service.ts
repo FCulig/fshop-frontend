@@ -26,4 +26,9 @@ export class PromotionRequestsService {
   declineRequest(requestId): Observable<any> {
     return this.http.put(Endpoints.BASE_URL + Endpoints.PROMOTION_REQUEST + requestId + Endpoints.DECLINE, '');
   }
+
+  isUserElegableForPromotion(userId): Observable<any> {
+    return this.http.get(Endpoints.BASE_URL + Endpoints.USERS + userId + Endpoints.CAN_PROMOTE);
+  }
+
 }

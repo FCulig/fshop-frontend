@@ -1,5 +1,5 @@
 <div class="form-container">
-    <h1>Uredite podatke:</h1>
+    <h1>Uredite osobne podatke:</h1>
     <form [formGroup]="userForm" (ngSubmit)="submit()">
 
         <div class="inline-fields">
@@ -69,8 +69,48 @@
 
         <div class="button-container">
             <button [disabled]="!userForm.valid" class="submit-button" type="submit" mat-raised-button
-                color="accent">Uredi</button>
+                color="accent">Uredi podatke</button>
+        </div>
+    </form>
+    <hr>
+    <h1>Promijenite lozinku:</h1>
+    <form [formGroup]="changePasswordForm" (ngSubmit)="changePassword()">
+        <div class="inline-fields">
+            <mat-form-field>
+                <mat-label>Nova lozinka</mat-label>
+                <input type="password" name="password" formControlName="password" matInput>
+                <mat-error *ngIf="password.hasError('required')">
+                    Nova lozinka <strong>obavezna</strong>
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-label>Ponovite novu lozinku</mat-label>
+                <input type="password" name="c_password" formControlName="c_password" matInput>
+                <mat-error *ngIf="c_password.hasError('required')">
+                    Ponovoljena nova lozinka <strong>obavezna</strong>
+                </mat-error>
+                <mat-error *ngIf="c_password.value != password.value">
+                    Lozinke se ne <strong>podudaraju</strong>
+                </mat-error>
+            </mat-form-field>
+        </div>
+
+        <div class="inline-fields">
+            <mat-form-field>
+                <mat-label>Stara lozinka</mat-label>
+                <input type="password" name="old_password" formControlName="old_password" matInput>
+                <mat-error *ngIf="old_password.hasError('required')">
+                    Stara lozinka je <strong>obavezna</strong>
+                </mat-error>
+            </mat-form-field>
+        </div>
+
+        <div class="button-container">
+            <button [disabled]="!changePasswordForm.valid" class="submit-button" type="submit" mat-raised-button
+                color="accent">Promijeni lozinku</button>
             <button (click)="cancel()" class="cancel-button" mat-raised-button>Odustani</button>
         </div>
     </form>
+
 </div>

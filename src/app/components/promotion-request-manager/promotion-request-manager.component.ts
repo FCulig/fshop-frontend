@@ -5,6 +5,7 @@ import { faTrash, faHourglassHalf, faCheck, faTimes } from '@fortawesome/free-so
 import { trigger, state, transition, style, animate } from '@angular/animations';
 import * as Endpoints from './../../services/endpoints.json';
 import { NotificationService } from 'src/app/services/notification.service';
+import { TransactionService } from 'src/app/services/transaction.service';
 
 @Component({
   selector: 'app-promotion-request-manager',
@@ -34,11 +35,18 @@ export class PromotionRequestManagerComponent implements OnInit {
 
   constructor(
     private promotionRequestService: PromotionRequestsService,
-    private notificationService: NotificationService
+    private notificationService: NotificationService,
+    private transactionService: TransactionService
   ) { }
 
   ngOnInit(): void {
     this.getPromotionRequests();
+  }
+
+  getNumberOfSoldItemsForUser(userId) {
+    this.transactionService.getUsersTransactionsWithStauts(userId, 3).subscribe(val => {
+      return val.length;
+    });
   }
 
   getPromotionRequests() {
@@ -46,6 +54,7 @@ export class PromotionRequestManagerComponent implements OnInit {
       this.requests = new MatTableDataSource(val);
       this.requests.paginator = this.paginator;
       this.requests.sort = this.sort;
+      console.log(val);
     });
   }
 

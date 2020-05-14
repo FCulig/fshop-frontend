@@ -113,8 +113,22 @@ button.submitButton {
   margin-top: 100px;
 }
 
-.registration-form-container {
+::ng-deep .mat-focused .mat-form-field-label {
+  color: white !important;
 }
 
-.register-form{
+::ng-deep.mat-form-field-underline {
+  background-color: white !important;
+}
+
+::ng-deep.mat-form-field-ripple {
+  background-color: white !important;
+}
+
+::ng-deep .mat-form-field-label {
+  color: white !important;
+}
+
+mat-datepicker-toggle {
+  color: white !important;
 }

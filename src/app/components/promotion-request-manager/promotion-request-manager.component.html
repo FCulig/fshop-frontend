@@ -36,11 +36,8 @@
                                 <div class="info-container">
                                     <p><b>{{element.user.first_name}} {{element.user.last_name}}</b></p>
                                     <p><b>Korisničko ime:</b> {{element.user.username}}</p>
-                                    <p><b>E-mail:</b> {{element.user.email}} </p>
-                                    <!--
-                                        //TODO:
-                                    -->
-                                    <p>Ukupan broj prodanih proizvoda: </p>
+                                    <p><b>E-mail:</b> {{element.user.email}}</p>
+                                    <p><b>Broj prodanih proizvoda:</b> {{element.user.number_sold_items}}</p>
                                 </div>
                                 <div class="image-container">
                                     <img [src]="getProfileImageUrl(element.user.profile_img_url)" />

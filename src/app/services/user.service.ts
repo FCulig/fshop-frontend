@@ -15,7 +15,7 @@ export class UserService {
   }
 
   getUserWithId(userId: number): Observable<any> {
-    return this.http.get(Endpoints.BASE_URL + Endpoints.USERS+ userId);
+    return this.http.get(Endpoints.BASE_URL + Endpoints.USERS + userId);
   }
 
   getAllUsers(): Observable<any> {
@@ -36,5 +36,9 @@ export class UserService {
 
   editUser(userId, userData): Observable<any> {
     return this.http.post(Endpoints.BASE_URL + Endpoints.USERS + userId, userData);
+  }
+
+  changeUsersPassword(userId, data): Observable<any> {
+    return this.http.put(Endpoints.BASE_URL + Endpoints.USERS + userId + Endpoints.CHANGE_PASSWORD, data);
   }
 }

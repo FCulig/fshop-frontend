@@ -44,7 +44,8 @@
     <ul class="navigation">
       <li>
         <div class="small-dropdown" style="float:right;">
-          <a>
+          <a matBadgeHidden="{{cart?.items?.length == 0}}" matBadge="{{cart?.items?.length}}" matBadgePosition="after"
+            matBadgeColor="warn">
             <fa-icon [icon]="faShoppingCart"></fa-icon>
           </a>
           <div class="small-dropdown-content" id="cart-dropdown">
@@ -88,10 +89,11 @@
             <fa-icon [icon]="faUser"></fa-icon>
           </a>
           <div *ngIf="isLoggedIn" class="small-dropdown-content">
-            <a class="dropdown-link" [routerLink]="['/admin']" href="#">Admin panel</a>
-            <a class="dropdown-link" [routerLink]="['/dashboard']" href="#">Dashboard</a>
+            <a *ngIf="roleId == 1" class="dropdown-link" [routerLink]="['/admin']" href="#">Admin panel</a>
+            <a *ngIf="roleId != 3" class="dropdown-link" [routerLink]="['/dashboard']" href="#">Dashboard</a>
             <a class="dropdown-link" [routerLink]="['/shopping-history', userId]" href="#">Povijest kupnje</a>
-            <a class="dropdown-link" [routerLink]="['/selling', userId]" href="#">Narudžbe</a>
+            <a class="dropdown-link" matBadgeHidden="{{numberPendingOrders == 0}}" matBadge="{{numberPendingOrders}}"
+              matBadgePosition="after" matBadgeColor="warn" [routerLink]="['/selling', userId]" href="#">Narudžbe</a>
             <a class="dropdown-link" [routerLink]="['/user-products', userId]" href="#">Moji proizvodi</a>
             <a class="dropdown-link" [routerLink]="['/profile', userId]" href="#">Moj profil</a>
             <a class="dropdown-link" (click)="logout()">Odjava</a>

@@ -55,7 +55,7 @@
           <mat-label>Datum rođenja</mat-label>
           <input name="birth_date" formControlName="birth_date" matInput [matDatepicker]="picker">
           <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-          <mat-datepicker #picker></mat-datepicker>
+          <mat-datepicker color="primary" #picker></mat-datepicker>
           <mat-error *ngIf="dateOfBirth.hasError('required')">
             Datum rođenja je <strong>obavezan</strong>
           </mat-error>

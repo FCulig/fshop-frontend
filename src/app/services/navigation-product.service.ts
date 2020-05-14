@@ -13,7 +13,6 @@ export class NavigationProductService {
 
   sendRefresh(m){
     this.refreshSource.next(m);
-    
   }
 
 }

@@ -8,6 +8,7 @@ mat-form-field {
 }
 
 form {
+    color: black;
     margin-top: 40px;
 
     .button-container {
@@ -19,7 +20,11 @@ form {
     }
 
     img {
-        width: 30%;
+        width: 10%;
         margin: 15px 0;
     }
+}
+
+hr {
+    margin: 20px;
 }
