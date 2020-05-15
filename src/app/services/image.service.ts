@@ -11,4 +11,8 @@ export class ImageService {
   getProductImageUrl(imageId) {
     return Endpoints.BASE_URL + Endpoints.PRODUCT_IMAGE + imageId;
   }
+
+  getCategoryImageUrl(imageName) {
+    return Endpoints.BASE_URL + Endpoints.CATEGORY_IMAGE + imageName;
+  }
 }

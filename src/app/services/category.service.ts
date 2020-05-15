@@ -19,7 +19,7 @@ export class CategoryService {
   }
 
   editCategory(categoryId, categoryData): Observable<any> {
-    return this.http.put(Endpoints.BASE_URL + Endpoints.CATEGORIES + categoryId, categoryData);
+    return this.http.post(Endpoints.BASE_URL + Endpoints.CATEGORIES + categoryId, categoryData);
   }
 
   deleteCateogry(categoryId): Observable<any> {

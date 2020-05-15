@@ -19,7 +19,7 @@ export class AdminPageComponent implements AfterViewInit {
 
   ngAfterViewInit() {
     setTimeout(() => {
-      this.setActiveComponent('PROMOTION_REQUEST_MANAGER');
+      this.setActiveComponent('CATEGORY_MANAGER');
       this.createComponent(this.activeComponent);
     });
   }

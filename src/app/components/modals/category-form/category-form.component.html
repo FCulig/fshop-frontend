@@ -21,6 +21,22 @@
             </mat-error>
         </mat-form-field>
 
+        <div class="image-upload-field">
+            <label for="fileInput">Fotografija kategorije:</label>
+            <button mat-raised-button color="accent" type="button" id="fileInputButton" (click)="fileInput.click()">
+                <span>
+                    <fa-icon [icon]="faUpload"></fa-icon>
+                </span>
+                <input id="fileInput" formControlName="image" #fileInput type="file" (change)="onFileChanged($event)"
+                    style="display:none;" />
+            </button>
+        </div>
+
+        <div class="selected-images">
+            <img [src]="imagePath" />
+            <img *ngIf="!imagePath && data" [src]="getCategoryImage()" />
+        </div>
+
         <div class="button-container">
             <button [disabled]="!categoryForm.valid" class="button" type="submit"
                 mat-raised-button>{{ data ? 'Uredi': 'Dodaj'}}</button>
