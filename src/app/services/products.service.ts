@@ -10,23 +10,35 @@ export class ProductsService {
 
   constructor(private http: HttpClient) { }
 
+  getAllProducts(): Observable<any> {
+    return this.http.get(Endpoints.BASE_URL + Endpoints.PRODUCTS);
+  }
+
+  getFilteredProducts(queryParameters): Observable<any> {
+    return this.http.get(Endpoints.BASE_URL + Endpoints.PRODUCTS + queryParameters);
+  }
+
   getProductWithId(productId): Observable<any> {
-    return this.http.get(Endpoints.BASE_URL + Endpoints.PRODUCTS +  productId);
+    return this.http.get(Endpoints.BASE_URL + Endpoints.PRODUCTS + productId);
   }
 
   getUsersProducts(userId): Observable<any> {
     return this.http.get(Endpoints.BASE_URL + Endpoints.USERS + userId + Endpoints.USERS_PRODUCTS_EXT);
   }
 
-  editProduct(productId, product) {
+  editProduct(productId, product): Observable<any> {
     return this.http.post(Endpoints.BASE_URL + Endpoints.PRODUCTS + productId, product);
   }
 
-  newProduct(product) {
+  newProduct(product): Observable<any> {
     return this.http.post(Endpoints.BASE_URL + Endpoints.PRODUCTS, product);
   }
 
-  deleteProduct(productId){
+  deleteProduct(productId): Observable<any> {
     return this.http.delete(Endpoints.BASE_URL + Endpoints.PRODUCTS + productId);
+  }
+
+  restockProduct(productId, quantity): Observable<any> {
+    return this.http.put(Endpoints.BASE_URL + Endpoints.PRODUCTS + productId + Endpoints.RESTOCK, { quantity });
   }
 }

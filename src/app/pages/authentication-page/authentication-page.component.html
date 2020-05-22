@@ -102,8 +102,13 @@
             <span>
               <fa-icon [icon]="faUpload"></fa-icon>
             </span>
-            <input id="fileInput" formControlName="profile_picture" #fileInput type="file" (change)="onFileChanged($event)" style="display:none;" />
+            <input id="fileInput" formControlName="profile_picture" #fileInput type="file"
+              (change)="onFileChanged($event)" style="display:none;" />
           </button>
+        </div>
+
+        <div *ngIf="imagePath" class="profile-image-preview">
+          <img [src]="imagePath" />
         </div>
 
         <button [disabled]="!registrationForm.valid" class="submitButton" type="submit" mat-raised-button

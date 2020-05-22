@@ -14,7 +14,6 @@ export class ImageGalleryComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    console.log(this.imgUrls);
     this.activeImg = this.imgUrls[0];
   }
 

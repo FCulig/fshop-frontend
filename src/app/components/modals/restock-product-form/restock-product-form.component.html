@@ -1,0 +1,17 @@
+<form [formGroup]="restockForm" (submit)="submit()">
+    <h1>Obnovite zalihu proizvoda</h1>
+    <h2>{{data?.name}}</h2>
+
+    <mat-form-field>
+        <mat-label>Zaliha</mat-label>
+        <input name="quantity" formControlName="quantity" matInput type="number">
+        <mat-error *ngIf="quantity.hasError('required')">
+            Zaliha je <strong>obavezna</strong>
+        </mat-error>
+    </mat-form-field>
+
+    <div class="buttons">
+        <button [disabled]="!restockForm.valid" mat-raised-button class="submit" type="submit" color="accent">Obnovi</button>
+        <button mat-raised-button type="button" (click)="cancel()">Odustani</button>
+    </div>
+</form>

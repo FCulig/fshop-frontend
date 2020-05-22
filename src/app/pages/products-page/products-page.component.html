@@ -1,0 +1,65 @@
+<div class="container">
+    <h1>Proizvodi</h1>
+    <div class="content">
+        <div class="sidebar-conatiner">
+            <div class="sidebar">
+                <div class="header">
+                    <h2>Filter:</h2>
+                    <button class="remove-all-filters" *ngIf="filters.size > 0" (click)="removeAllFilters()" >Očisti filtere</button>
+                </div>
+                <div class="current-filters">
+                    <button *ngFor="let filter of filters | keyvalue" class="filter" mat-button matSuffix
+                        mat-icon-button aria-label="Clear" (click)="removeFilter(filter.key)">
+                        {{filter.value}}<mat-icon>close</mat-icon>
+                    </button>
+                </div>
+                <form [formGroup]="filterForm" (submit)="filterProducts()">
+                    <mat-form-field class="category-filter">
+                        <mat-label>Kategorija</mat-label>
+                        <mat-select formControlName="category">
+                            <mat-option>Sve</mat-option>
+                            <mat-optgroup *ngFor="let group of categoryGroups" [label]="group.name">
+                                <mat-option *ngFor="let category of group.categories"
+                                    [value]="{id: category.id, name: category.name}">
+                                    {{category.name}}
+                                </mat-option>
+                            </mat-optgroup>
+                        </mat-select>
+                    </mat-form-field>
+
+                    <div class="inline">
+                        <mat-form-field>
+                            <mat-label>Cijena od</mat-label>
+                            <input matInput type="number" formControlName="minPrice">
+                            <button mat-button *ngIf="minPrice" matSuffix mat-icon-button aria-label="Clear"
+                                (click)="resetMinPrice()">
+                                <mat-icon>close</mat-icon>
+                            </button>
+                        </mat-form-field>
+
+                        <mat-form-field>
+                            <mat-label>Cijena do</mat-label>
+                            <input matInput type="number" formControlName="maxPrice">
+                            <button mat-button *ngIf="maxPrice" matSuffix mat-icon-button aria-label="Clear"
+                                (click)="resetMaxPrice()">
+                                <mat-icon>close</mat-icon>
+                            </button>
+                        </mat-form-field>
+                    </div>
+
+                    <button mat-raised-button color="accent">Pretraži</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="products">
+            <div *ngIf="!products || products.length==0" class="no-products">
+                <h1>Nema proizvoda</h1>
+            </div>
+            <div class="shop-item-container" *ngIf="products?.length>0">
+                <app-shop-item *ngFor="let product of products" [product]="product"
+                    [routerLink]="['/product', product.id]"></app-shop-item>
+            </div>
+        </div>
+    </div>
+</div>

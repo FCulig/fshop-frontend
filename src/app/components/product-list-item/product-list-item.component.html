@@ -23,8 +23,13 @@
                 <p id="description">{{product.description}}</p>
             </div>
             <div class="product-details">
-                <p>Cijena: {{product.price | number:'1.2-2'}}kn</p>
-                <p>Raspoloživa količina: {{product.quantity}}</p>
+                <p>Cijena: <b>{{product.price | number:'1.2-2'}}kn</b></p>
+                <p [ngClass]="{'restock': product.quantity == 0}">Raspoloživa količina: <b>{{product.quantity}}</b></p>
+                <br>
+                <button *ngIf="roleId == 3 && isRestockable" mat-raised-button class="restock-button" (click)="userRestock()">Obnovite
+                    zalihu</button>
+                <button *ngIf="roleId != 3" mat-raised-button class="restock-button" (click)="shopRestock()">Obnovite
+                    zalihu</button>
             </div>
         </div>
     </div>

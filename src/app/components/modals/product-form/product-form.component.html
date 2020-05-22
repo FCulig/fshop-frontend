@@ -27,13 +27,16 @@
             </mat-form-field>
 
             <mat-form-field>
-                <mat-label>Cijena proizvoda: </mat-label>
+                <mat-label>Cijena proizvoda (kn): </mat-label>
                 <input name="price" formControlName="price" type="number" matInput>
                 <mat-error *ngIf="price.hasError('required')">
                     Cijena proizvoda je <strong>obavezna</strong>
                 </mat-error>
             </mat-form-field>
         </div>
+        <mat-error *ngIf="restockingError">
+            <strong>{{restockingError}}</strong>
+        </mat-error>
 
         <div class="inline-fields">
             <div class="image-upload-field">
@@ -46,9 +49,6 @@
                         (change)="onFileChanged($event)" style="display:none;" />
                 </button>
             </div>
-            <div class="currency-values">
-                Cijena: {{price.value | number:'1.2-2'}} kn
-            </div>
         </div>
 
         <div class="selected-images">
@@ -57,6 +57,10 @@
                 <img *ngFor="let img of data?.images" [src]="getProductImage(img.id)" />
             </div>
         </div>
+
+        <mat-error *ngIf="imageError">
+            <strong>{{imageError}}</strong>
+        </mat-error>
 
         <mat-form-field>
             <mat-label>Kategorija</mat-label>

@@ -61,6 +61,9 @@ import { ShoppingHistoryPageComponent } from './pages/shopping-history-page/shop
 import { TransactionItemComponent } from './components/transaction-item/transaction-item.component';
 import { SellingPageComponent } from './pages/selling-page/selling-page.component';
 import { OrderItemComponent } from './components/order-item/order-item.component';
+import { ProductsPageComponent } from './pages/products-page/products-page.component';
+import { ShopItemComponent } from './components/shop-item/shop-item.component';
+import { RestockProductFormComponent } from './components/modals/restock-product-form/restock-product-form.component';
 
 const matFormModules = [
   MatButtonModule,
@@ -122,6 +125,9 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
     TransactionItemComponent,
     SellingPageComponent,
     OrderItemComponent,
+    ProductsPageComponent,
+    ShopItemComponent,
+    RestockProductFormComponent,
   ],
   imports: [
     BrowserModule,

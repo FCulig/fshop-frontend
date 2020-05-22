@@ -15,6 +15,10 @@ export class CategoryGroupService {
     return this.http.get(Endpoints.BASE_URL + Endpoints.CATEGORY_GROUP);
   }
 
+  getGroupWithId(groupId): Observable<any> {
+    return this.http.get(Endpoints.BASE_URL + Endpoints.CATEGORY_GROUP + groupId);
+  }
+
   deleteCategoryGroup(groupId): Observable<any> {
     return this.http.delete(Endpoints.BASE_URL + Endpoints.CATEGORY_GROUP + groupId);
   }

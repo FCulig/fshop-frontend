@@ -60,8 +60,15 @@ $flourescent-blue-faded: #66fcf293;
 }
 
 .user-content {
-    background-color: #fff;
     margin-left: 15px;
     border-radius: 5px;
     min-height: 100vh;
+
+    background-color: $lighter-black;
+    display: grid;
+    grid-template-columns: repeat(5, 20%);
+
+    app-shop-item {
+        margin-right: 5px;
+    }
 }

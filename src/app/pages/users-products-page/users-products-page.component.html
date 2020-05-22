@@ -8,10 +8,10 @@
         </div>
     </div>
     <div class="products-list-container">
-        <div *ngIf="!products" class="no-prodcuts">
-            Nemate prozvoda!
+        <div *ngIf="products.length == 0" class="no-products background">
+            <h2>Nemate proizvda!</h2>
         </div>
-        <div *ngIf="products" class="product-list">
+        <div *ngIf="products.length > 0" class="product-list background">
             <app-product-list-view [products]="products"></app-product-list-view>
         </div>
     </div>

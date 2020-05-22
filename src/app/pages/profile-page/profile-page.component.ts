@@ -12,6 +12,7 @@ import { MatDialog } from '@angular/material';
 import { UserFormComponent } from 'src/app/components/modals/user-form/user-form.component';
 import { PromotionFormComponent } from 'src/app/components/modals/promotion-form/promotion-form.component';
 import { PromotionRequestsService } from 'src/app/services/promotion-requests.service';
+import { ProductsService } from 'src/app/services/products.service';
 
 @Component({
   selector: 'app-profile-page',
@@ -29,6 +30,7 @@ export class ProfilePageComponent implements OnInit {
   user;
   isUpgradeable = false;
   isUsersProfile = false;
+  usersProducts;
   profilePictureUrl = 'http://localhost:8000/api/profilePicture/default.png';
 
   constructor(
@@ -38,7 +40,8 @@ export class ProfilePageComponent implements OnInit {
     private dialog: MatDialog,
     private notificationService: NotificationService,
     private roleService: RoleService,
-    private promotionRequestService: PromotionRequestsService
+    private promotionRequestService: PromotionRequestsService,
+    private productService: ProductsService
   ) { }
 
   ngOnInit() {
@@ -49,6 +52,7 @@ export class ProfilePageComponent implements OnInit {
   getUser() {
     this.userService.getUserWithId(this.userId).subscribe(val => {
       this.user = val;
+      this.getUsersProducts(val.id);
       this.profilePictureUrl = Endpoints.BASE_URL + Endpoints.PROFILE_PICTURE + val.profile_img_url;
       console.log(val);
       this.getRole(this.user.role_id);
@@ -61,6 +65,12 @@ export class ProfilePageComponent implements OnInit {
           });
         }
       }
+    });
+  }
+
+  getUsersProducts(userId) {
+    this.productService.getUsersProducts(userId).subscribe(val => {
+      this.usersProducts = val;
     });
   }
 

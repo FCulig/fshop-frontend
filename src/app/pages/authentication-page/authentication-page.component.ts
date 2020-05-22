@@ -23,6 +23,7 @@ export class AuthenticationPageComponent implements OnInit {
   isRegister = false;
 
   selectedFile: File;
+  imagePath;
 
   constructor(
     private userService: UserService,
@@ -74,15 +75,23 @@ export class AuthenticationPageComponent implements OnInit {
 
   onFileChanged(event) {
     this.selectedFile = event.target.files[0];
+
+    let reader = new FileReader();
+    reader.readAsDataURL(this.selectedFile);
+    reader.onload = (_event) => {
+      this.imagePath = reader.result;
+    }
   }
 
   register() {
     if (this.passwordsMatch()) {
       this.registrationForm.value.birth_date = formatDate(this.registrationForm.value.birth_date, 'yyyy-MM-dd', 'en');
       let formData = new FormData();
-      formData.append('profile_picture', this.selectedFile, this.selectedFile.name)
+      if (this.selectedFile) {
+        formData.append('profile_picture', this.selectedFile, this.selectedFile.name)
+      }
       for (var key in this.registrationForm.value) {
-        if (this.registrationForm.value.hasOwnProperty(key) && key != 'profile_picture' ) {
+        if (this.registrationForm.value.hasOwnProperty(key) && key != 'profile_picture') {
           formData.append(key, this.registrationForm.value[key]);
         }
       }

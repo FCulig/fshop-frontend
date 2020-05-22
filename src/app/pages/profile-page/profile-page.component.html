@@ -41,8 +41,9 @@
                     *ngIf="isUsersProfile && isUpgradeable">Nadogradnja u trgovinu</button>
             </div>
         </div>
-        <div class="user-content">
 
+        <div class="user-content">
+            <app-shop-item *ngFor="let product of usersProducts" [product]="product"></app-shop-item>
         </div>
     </div>
 </div>

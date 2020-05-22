@@ -15,18 +15,12 @@ export class CategoryFormComponent implements OnInit {
 
   categoryForm;
   groups;
-
-  imagePath;
-  selectedFile: File;
-
-  selectedValue;
-
+  
   constructor(
     public dialogRef: MatDialogRef<CategoryFormComponent>,
     @Inject(MAT_DIALOG_DATA) public data,
     private fb: FormBuilder,
-    private categoryGroupService: CategoryGroupService,
-    private imageService: ImageService
+    private categoryGroupService: CategoryGroupService
   ) {
   }
 
@@ -40,7 +34,6 @@ export class CategoryFormComponent implements OnInit {
     this.categoryForm = this.fb.group({
       name: [this.data?.name, Validators.required],
       group_id: [this.data?.group.id, Validators.required],
-      image: []
     });
   }
 
@@ -55,20 +48,6 @@ export class CategoryFormComponent implements OnInit {
     this.dialogRef.close();
   }
 
-  onFileChanged(event) {
-    this.selectedFile = event.target.files[0];
-
-    let reader = new FileReader();
-    reader.readAsDataURL(this.selectedFile);
-    reader.onload = (_event) => {
-      this.imagePath = reader.result;
-    }
-  }
-
-  getCategoryImage() {
-    return this.imageService.getCategoryImageUrl(this.data.img);
-  }
-
   get name() {
     return this.categoryForm.get('name');
   }
@@ -78,20 +57,7 @@ export class CategoryFormComponent implements OnInit {
   }
 
   submit() {
-    let formData = new FormData();
-
-    if (this.selectedFile) {
-      formData.append('image', this.selectedFile, this.selectedFile['name']);
-    }
-
-    for (var key in this.categoryForm.value) {
-      if (this.categoryForm.value.hasOwnProperty(key) && key != 'image') {
-        console.log(key + ": " + this.categoryForm.value[key]);
-        formData.append(key, this.categoryForm.value[key]);
-      }
-    }
-
-    this.dialogRef.close(formData);
+    this.dialogRef.close(this.categoryForm.value);
   }
 
 }

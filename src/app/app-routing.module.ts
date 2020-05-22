@@ -14,9 +14,11 @@ import { CartSummaryComponent } from './pages/cart-summary/cart-summary.componen
 import { FinishShoppingPageComponent } from './pages/finish-shopping-page/finish-shopping-page.component';
 import { ShoppingHistoryPageComponent } from './pages/shopping-history-page/shopping-history-page.component';
 import { SellingPageComponent } from './pages/selling-page/selling-page.component';
+import { ProductsPageComponent } from './pages/products-page/products-page.component';
 
 
 const routes: Routes = [
+  { path: 'products', component: ProductsPageComponent },
   { path: 'selling/:id', component: SellingPageComponent, canActivate: [UserWithIdGuardGuard] },
   { path: 'shopping-history/:id', component: ShoppingHistoryPageComponent, canActivate: [UserWithIdGuardGuard] },
   { path: 'finish-shopping/:id', component: FinishShoppingPageComponent },

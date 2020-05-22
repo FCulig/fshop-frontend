@@ -15,11 +15,11 @@ $flourescent-blue-faded: #66fcf293;
         font-size: 3em;
     }
 
-    .new-product-button-container{
+    .new-product-button-container {
         display: flex;
         align-content: center;
         justify-content: flex-end;
-        button{
+        button {
             border: 0;
             background-color: $flourescent-blue-faded;
             color: $black;
@@ -27,14 +27,33 @@ $flourescent-blue-faded: #66fcf293;
             font-size: 1.2em;
             border-radius: 5px;
 
-            &:hover{
+            &:hover {
                 background-color: $flourescent-blue;
             }
         }
     }
 }
 
-.products-list-container{
+.products-list-container {
     background-color: $lighter-black;
     min-height: 100vh;
+
+    .background {
+        background-color: white;
+    }
+
+    .no-products {
+        padding: 5px;
+        text-align: center;
+        border-radius: 5px;
+
+        h2 {
+            font-size: 2em;
+        }
+    }
+
+    .product-list {
+        padding: 5px;
+        border-radius: 5px;
+    }
 }

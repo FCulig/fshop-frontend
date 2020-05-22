@@ -15,7 +15,7 @@ $flourescent-blue-faded: #66fcf293;
   grid-template-columns: 50% 50%;
   border-radius: 15px;
   color: $grey;
-  height: 700px;
+  //height: 700px;
   //border: 1px solid $flourescent-blue;
 }
 
@@ -131,4 +131,20 @@ button.submitButton {
 
 mat-datepicker-toggle {
   color: white !important;
+}
+
+.register-form {
+  .submitButton {
+    background-color: $flourescent-blue !important;
+    color: black;
+  }
+
+  .profile-image-preview {
+    width: 20%;
+    margin: auto;
+
+    img {
+      width: 100%;
+    }
+  }
 }

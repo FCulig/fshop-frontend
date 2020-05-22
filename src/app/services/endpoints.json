@@ -8,6 +8,7 @@
     "PRODUCT_IMAGE": "/productImage/",
     "CATEGORY_IMAGE": "/categoryImage/",
     "PRODUCTS": "/product/",
+    "RESTOCK": "/restock/",
     "USERS_PRODUCTS_EXT": "/products",
     "CATEGORIES": "/categories/",
     "PROMOTE": "/promote/",
