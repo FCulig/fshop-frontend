@@ -27,13 +27,19 @@
                             <div class="quantity">Raspoloživo: {{product.quantity}}</div>
                         </div>
                         <div class="button-container">
-                            <button [disabled]="checkQuantity()" (click)="buyProduct()" class="buy-button" mat-raised-button>Kupi</button>
-                            <button [disabled]="checkQuantity()" (click)="addToCart()" class="cart-button" mat-raised-button>Dodaj u
+                            <button [disabled]="checkQuantity()" (click)="buyProduct()" class="buy-button"
+                                mat-raised-button>Kupi</button>
+                            <button [disabled]="checkQuantity()" (click)="addToCart()" class="cart-button"
+                                mat-raised-button>Dodaj u
                                 košaricu</button>
                         </div>
                     </div>
                 </div>
             </div>
+        </div>
+
+        <div class="comments">
+            <app-comments [productId]="product.id" [comments]="product.comments" ></app-comments>
         </div>
     </div>
 </div>

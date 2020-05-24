@@ -13,6 +13,7 @@ import { UserFormComponent } from 'src/app/components/modals/user-form/user-form
 import { PromotionFormComponent } from 'src/app/components/modals/promotion-form/promotion-form.component';
 import { PromotionRequestsService } from 'src/app/services/promotion-requests.service';
 import { ProductsService } from 'src/app/services/products.service';
+import { ImageService } from 'src/app/services/image.service';
 
 @Component({
   selector: 'app-profile-page',
@@ -41,7 +42,8 @@ export class ProfilePageComponent implements OnInit {
     private notificationService: NotificationService,
     private roleService: RoleService,
     private promotionRequestService: PromotionRequestsService,
-    private productService: ProductsService
+    private productService: ProductsService,
+    private imageService: ImageService
   ) { }
 
   ngOnInit() {
@@ -53,7 +55,7 @@ export class ProfilePageComponent implements OnInit {
     this.userService.getUserWithId(this.userId).subscribe(val => {
       this.user = val;
       this.getUsersProducts(val.id);
-      this.profilePictureUrl = Endpoints.BASE_URL + Endpoints.PROFILE_PICTURE + val.profile_img_url;
+      this.profilePictureUrl = this.imageService.getProfileImageUrl(val.profile_img_url);
       console.log(val);
       this.getRole(this.user.role_id);
 

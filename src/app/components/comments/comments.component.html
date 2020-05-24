@@ -1,0 +1,21 @@
+<h1>Komentari</h1>
+<div class="new-comment">
+    <form [formGroup]="commentForm" (submit)="submit()">
+        <div class="input">
+            <mat-label>Ostavite komentar</mat-label>
+            <textarea matInput name="comment" formControlName="comment"></textarea>
+            <!--<mat-error *ngIf="comment.hasError('required')">
+                Komentar ne smije biti <strong>prazan</strong>
+            </mat-error>-->
+        </div>
+        <div class="submit">
+            <button mat-raised-button type="submit">Pošalji</button>
+        </div>
+    </form>
+</div>
+<div *ngIf="!comments || comments?.length == 0">
+    Nema komentara na ovom proizvodu
+</div>
+<div *ngIf="comments?.length > 0">
+    <app-comment-item *ngFor="let comment of comments" [comment]="comment" (refreshComments)="getComments()" ></app-comment-item>
+</div>

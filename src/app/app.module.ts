@@ -64,6 +64,8 @@ import { OrderItemComponent } from './components/order-item/order-item.component
 import { ProductsPageComponent } from './pages/products-page/products-page.component';
 import { ShopItemComponent } from './components/shop-item/shop-item.component';
 import { RestockProductFormComponent } from './components/modals/restock-product-form/restock-product-form.component';
+import { CommentsComponent } from './components/comments/comments.component';
+import { CommentItemComponent } from './components/comments/comment-item/comment-item.component';
 
 const matFormModules = [
   MatButtonModule,
@@ -128,6 +130,8 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
     ProductsPageComponent,
     ShopItemComponent,
     RestockProductFormComponent,
+    CommentsComponent,
+    CommentItemComponent,
   ],
   imports: [
     BrowserModule,

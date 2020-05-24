@@ -24,5 +24,6 @@
     "ORDERS": "/orders/",
     "SHIP": "/ship/",
     "CAN_PROMOTE": "/can-promote/",
-    "CHANGE_PASSWORD": "/change-password/"
+    "CHANGE_PASSWORD": "/change-password/",
+    "COMMENTS":"/comments/"
 }

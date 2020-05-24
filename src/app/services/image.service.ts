@@ -1,18 +1,17 @@
-import { Injectable } from '@angular/core';
-import * as Endpoints from './endpoints.json';
+import { Injectable } from "@angular/core";
+import * as Endpoints from "./endpoints.json";
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root"
 })
 export class ImageService {
-
-  constructor() { }
+  constructor() {}
 
   getProductImageUrl(imageId) {
     return Endpoints.BASE_URL + Endpoints.PRODUCT_IMAGE + imageId;
   }
 
-  getCategoryImageUrl(imageName) {
-    return Endpoints.BASE_URL + Endpoints.CATEGORY_IMAGE + imageName;
+  getProfileImageUrl(imageUrl) {
+    return Endpoints.BASE_URL + Endpoints.PROFILE_PICTURE + imageUrl;
   }
 }
