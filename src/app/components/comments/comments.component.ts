@@ -36,7 +36,6 @@ export class CommentsComponent implements OnInit {
     });
   }
 
-  //TODO: pretvori da vraca Comment Resource na backendu
   getComments() {
     this.commentService.getCommentsOnProduct(this.productId).subscribe(val => {
       this.comments = val;

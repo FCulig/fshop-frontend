@@ -3,3 +3,35 @@ $lighter-black: #1a1d27;
 $grey: #c5c6c7;
 $flourescent-blue: #66fcf1;
 $flourescent-blue-faded: #66fcf293;
+
+.new-comment,
+.comments {
+    border-radius: 5px;
+    padding: 10px;
+    background-color: white;
+}
+
+form {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 80% 20%;
+
+    mat-form-field {
+        padding: 5px;
+        width: 100%;
+    }
+
+    .submit {
+        padding: 15px;
+        display: flex;
+        align-items: center;
+
+        button {
+            width: 100%;
+        }
+    }
+}
+
+.comments {
+    margin-top: 20px;
+}
