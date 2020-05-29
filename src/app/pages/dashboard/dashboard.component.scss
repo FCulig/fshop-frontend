@@ -1,0 +1,62 @@
+$black: #0b0c10;
+$lighter-black: #1a1d27;
+$grey: #c5c6c7;
+$flourescent-blue: #66fcf1;
+$flourescent-blue-faded: #66fcf293;
+
+.container {
+    background-color: $lighter-black;
+
+    h1 {
+        font-size: 3em;
+        padding: 15px 0;
+        color: $flourescent-blue;
+    }
+
+    .content {
+        display: grid;
+        grid-template-columns: 50% 50%;
+        border-radius: 5px;
+        min-height: 100vh;
+
+        .card {
+            margin-top: 15px;
+            width: 100%;
+
+            h2 {
+                color: $flourescent-blue;
+                padding-bottom: 10px;
+                font-size: 1.8em;
+            }
+
+            div {
+                background-color: white;
+                padding: 10px;
+                border-radius: 5px;
+                margin-right: 10px;
+            }
+
+            .no-data {
+                color: $grey;
+                text-align: center;
+            }
+
+            .comments p.comment {
+                color: $grey;
+                margin-top: 5px;
+
+                a {
+                    color: $grey;
+
+                    &:hover {
+                        color: $black;
+                    }
+                }
+
+                span {
+                    color: black;
+                }
+            }
+        }
+    }
+}

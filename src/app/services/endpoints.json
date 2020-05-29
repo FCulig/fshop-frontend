@@ -25,5 +25,6 @@
     "SHIP": "/ship/",
     "CAN_PROMOTE": "/can-promote/",
     "CHANGE_PASSWORD": "/change-password/",
-    "COMMENTS":"/comments/"
+    "COMMENTS": "/comments/",
+    "LATEST_COMMENTS": "/latest-comments/"
 }

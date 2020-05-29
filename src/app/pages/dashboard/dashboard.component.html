@@ -1,1 +1,51 @@
-<p>dashboard works!</p>
+<div class="container">
+    <h1>Statistika poslovanja</h1>
+    <div class="content">
+        <div class="left">
+            <div *ngIf="latestTransactions" class="card">
+                <h2>Prodaja zadnjih 7 dana</h2>
+                <div>
+                    <canvas baseChart [data]="pieChartData" [labels]="pieChartLabels" [chartType]="pieChartType"
+                        [options]="pieChartOptions" [plugins]="pieChartPlugins" [legend]="pieChartLegend">
+                    </canvas>
+                </div>
+            </div>
+            <div *ngIf="transactions" class="card">
+                <h2>Zarada</h2>
+                <div>
+                    <ul>
+                        <li>Zadnjih 7 dana</li>
+                        <li>Prošli mjesec</li>
+                        <li>Ukupno</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="right">
+            <div class="card">
+                <h2>Najnoviji komentari:</h2>
+                <div>
+                    <div *ngIf="!latestComments || latestComments?.length == 0" class="no-data">
+                        <p>Nema komentara na vašim proizvodima!</p>
+                    </div>
+                    <div *ngIf="latestComments && latestComments.length > 0" class="comments">
+                        <p *ngFor="let comment of latestComments" class="comment">
+                            <a [routerLink]="['/profile', comment.user.id]" href="#">{{comment.user.username}}</a>
+                            komentira
+                            <span>{{comment.comment}}</span> <small> u {{comment.created_at}}</small>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div *ngIf="transactions" class="card">
+                <h2>Ukupan broj prodanih proizvoda</h2>
+                <div>
+                    <canvas baseChart [datasets]="barChartData" [labels]="barChartLabels" [options]="barChartOptions"
+                        [plugins]="barChartPlugins" [chartType]="barChartType">
+                    </canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

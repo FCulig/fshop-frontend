@@ -66,6 +66,7 @@ import { ShopItemComponent } from './components/shop-item/shop-item.component';
 import { RestockProductFormComponent } from './components/modals/restock-product-form/restock-product-form.component';
 import { CommentsComponent } from './components/comments/comments.component';
 import { CommentItemComponent } from './components/comments/comment-item/comment-item.component';
+import { ChartsModule } from 'ng2-charts';
 
 const matFormModules = [
   MatButtonModule,
@@ -146,6 +147,7 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
     HttpClientModule,
     SimpleNotificationsModule.forRoot(),
     NgxUiLoaderModule.forRoot(ngxUiLoaderConfig),
+    ChartsModule
   ],
   exports: [matFormModules],
   entryComponents: [ProductFormComponent],

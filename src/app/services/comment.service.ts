@@ -7,7 +7,7 @@ import * as Endpoints from "./endpoints.json";
   providedIn: "root"
 })
 export class CommentService {
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   getCommentsOnProduct(productId): Observable<any> {
     return this.http.get(
@@ -25,6 +25,12 @@ export class CommentService {
   deleteComment(commentId): Observable<any> {
     return this.http.delete(
       Endpoints.BASE_URL + Endpoints.COMMENTS + commentId
+    );
+  }
+
+  getLatestCommentsOnUsersProducts(userId): Observable<any> {
+    return this.http.get(
+      Endpoints.BASE_URL + Endpoints.USERS + userId + Endpoints.LATEST_COMMENTS
     );
   }
 }
