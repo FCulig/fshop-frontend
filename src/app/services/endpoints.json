@@ -26,5 +26,6 @@
     "CAN_PROMOTE": "/can-promote/",
     "CHANGE_PASSWORD": "/change-password/",
     "COMMENTS": "/comments/",
-    "LATEST_COMMENTS": "/latest-comments/"
+    "LATEST_COMMENTS": "/latest-comments/",
+    "PROFIT": "/profit/"
 }

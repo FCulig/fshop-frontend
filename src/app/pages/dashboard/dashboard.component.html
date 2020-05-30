@@ -10,14 +10,21 @@
                     </canvas>
                 </div>
             </div>
-            <div *ngIf="transactions" class="card">
+            <div *ngIf="profits" class="card">
                 <h2>Zarada</h2>
                 <div>
-                    <ul>
-                        <li>Zadnjih 7 dana</li>
-                        <li>Prošli mjesec</li>
-                        <li>Ukupno</li>
-                    </ul>
+                    <table>
+                        <tr>
+                            <th>Zadnjih 7 dana</th>
+                            <th>Prošli mjesec</th>
+                            <th>Od početka</th>
+                        </tr>
+                        <tr>
+                            <td>{{profits.week}}kn</td>
+                            <td>{{profits.month}}kn</td>
+                            <td>{{profits.total}}kn</td>
+                        </tr>
+                    </table>
                 </div>
             </div>
         </div>
