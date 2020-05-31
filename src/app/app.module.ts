@@ -67,6 +67,7 @@ import { RestockProductFormComponent } from './components/modals/restock-product
 import { CommentsComponent } from './components/comments/comments.component';
 import { CommentItemComponent } from './components/comments/comment-item/comment-item.component';
 import { ChartsModule } from 'ng2-charts';
+import { AllCategoriesComponent } from './pages/all-categories/all-categories.component';
 
 const matFormModules = [
   MatButtonModule,
@@ -133,6 +134,7 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
     RestockProductFormComponent,
     CommentsComponent,
     CommentItemComponent,
+    AllCategoriesComponent,
   ],
   imports: [
     BrowserModule,

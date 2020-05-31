@@ -15,9 +15,10 @@ import { FinishShoppingPageComponent } from './pages/finish-shopping-page/finish
 import { ShoppingHistoryPageComponent } from './pages/shopping-history-page/shopping-history-page.component';
 import { SellingPageComponent } from './pages/selling-page/selling-page.component';
 import { ProductsPageComponent } from './pages/products-page/products-page.component';
-
+import { AllCategoriesComponent } from './pages/all-categories/all-categories.component';
 
 const routes: Routes = [
+  { path: 'categories', component: AllCategoriesComponent },
   { path: 'products', component: ProductsPageComponent },
   { path: 'selling/:id', component: SellingPageComponent, canActivate: [UserWithIdGuardGuard] },
   { path: 'shopping-history/:id', component: ShoppingHistoryPageComponent, canActivate: [UserWithIdGuardGuard] },

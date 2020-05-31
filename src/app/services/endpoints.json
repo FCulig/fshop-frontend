@@ -27,5 +27,6 @@
     "CHANGE_PASSWORD": "/change-password/",
     "COMMENTS": "/comments/",
     "LATEST_COMMENTS": "/latest-comments/",
-    "PROFIT": "/profit/"
+    "PROFIT": "/profit/",
+    "HOME_PAGE": "home/"
 }

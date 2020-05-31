@@ -1,42 +1,117 @@
 <div class="navigation-bar-container">
   <nav class="left-side">
     <ul class="navigation">
-      <li><a href="" class="brk-btn">Računala i mobiteli</a></li>
-      <li><a href="" class="brk-btn">Sport</a></li>
-      <li><a href="" class="brk-btn">Kozmetika</a></li>
       <div class="dropdown">
-        <li><a href="" class="brk-btn">Odjeća i obuća</a></li>
-        <div class="big-dropdown-content">
+        <li><a href="" class="brk-btn">Računala i mobiteli</a></li>
+        <div id="no-offset" class="big-dropdown-content">
           <div class="header">
-            <h2>Odjeća i obuća</h2>
+            <h2>IT Oprema</h2>
           </div>
           <div class="row">
             <div class="column">
               <h3>
-                <fa-icon [icon]="faMale"></fa-icon> Muškarci
+                <fa-icon [icon]="faMemory"></fa-icon> Komponente
               </h3>
-              <a href="#">Košulje</a>
-              <a href="#">Majice</a>
-              <a href="#">Hlače</a>
+              <a href="#">Memorija</a>
+              <a href="#">RAM</a>
+              <a href="#">Procesori</a>
+              <a href="#">Grafičke kartice</a>
+              <a href="#">Napajanja</a>
+              <a href="#">Ostale komponente</a>
             </div>
             <div class="column">
               <h3>
-                <fa-icon [icon]="faFemale"></fa-icon> Žene
+                <fa-icon [icon]="faKeyboard"></fa-icon> Periferija
               </h3>
-              <a href="#">Haljine</a>
-              <a href="#">Bluze</a>
-              <a href="#">Link 3</a>
+              <a href="#">Tipkovnice</a>
+              <a href="#">Miševi</a>
+              <a href="#">Monitori</a>
+              <a href="#">Audio i video</a>
+              <a href="#">Ostala periferija</a>
             </div>
             <div class="column">
               <h3>
-                <fa-icon id="child" [icon]="faChild"></fa-icon> Djeca
+                <fa-icon [icon]="faDesktop"></fa-icon> Računala
               </h3>
-              <a href="#">Majice</a>
-              <a href="#">Hlače</a>
-              <a href="#">Jakne</a>
+              <a href="#">Prijenosna računala</a>
+              <a href="#">Stolna računala</a>
+              <a href="#">Serveri</a>
+              <a href="#">Ostala računala</a>
             </div>
           </div>
         </div>
+      </div>
+      <div class="dropdown">
+        <li><a href="" class="brk-btn">Hrana i piće</a></li>
+        <div id="no-offset" class="big-dropdown-content">
+          <div class="header">
+            <h2>Hrana i piće</h2>
+          </div>
+          <div class="row">
+            <div class="column">
+              <h3>
+                <fa-icon [icon]="faUtensils"></fa-icon> Hrana
+              </h3>
+              <a href="#">Voće</a>
+              <a href="#">Povrće</a>
+              <a href="#">Kolači</a>
+              <a href="#">Zimnica</a>
+              <a href="#">Meso i mesnati proizvodi</a>
+              <a href="#">Ostala hrana</a>
+            </div>
+            <div class="column">
+              <h3>
+                <fa-icon [icon]="faWineGlass"></fa-icon> Piće
+              </h3>
+              <a href="#">Vina</a>
+              <a href="#">Sokovi</a>
+              <a href="#">Kava</a>
+              <a href="#">Ostala pića</a>
+            </div>
+            <div class="column">
+              <h3>
+                <fa-icon [icon]="faPepperHot"></fa-icon> Začini
+              </h3>
+              <a href="#">Ulja</a>
+              <a href="#">Masti</a>
+              <a href="#">Žitarice</a>
+              <a href="#">Ostali začini</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="dropdown">
+        <li><a href="" class="brk-btn">Auto Moto</a></li>
+        <div id="two-columns" class="big-dropdown-content">
+          <div class="header">
+            <h2>Automobili i motori</h2>
+          </div>
+          <div class="row">
+            <div class="column">
+              <h3>
+                <fa-icon [icon]="faCar"></fa-icon> Automobili
+              </h3>
+              <a href="#">Osobni automobili</a>
+              <a href="#">Kamperi</a>
+              <a href="#">Gospodarksa vozila</a>
+              <a href="#">Ostali automobili</a>
+            </div>
+            <div class="column">
+              <h3>
+                <fa-icon [icon]="faMotorcycle"></fa-icon> Motori
+              </h3>
+              <a href="#">Skuteri</a>
+              <a href="#">Cross</a>
+              <a href="#">Cestovni</a>
+              <a href="#">Quad</a>
+              <a href="#">Cestovni</a>
+              <a href="#">Ostali motori</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="dropdown">
+        <li><a [routerLink]="['/categories']" href="" class="brk-btn">Sve kateorije</a></li>
       </div>
     </ul>
   </nav>

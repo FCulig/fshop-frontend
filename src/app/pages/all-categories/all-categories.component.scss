@@ -1,0 +1,26 @@
+$black: #0b0c10;
+$lighter-black: #1a1d27;
+$grey: #c5c6c7;
+$flourescent-blue: #66fcf1;
+$flourescent-blue-faded: #66fcf293;
+
+.container {
+  background-color: $lighter-black;
+  min-height: 100vh;
+
+  h1 {
+    font-size: 3em;
+    padding: 15px 0;
+    color: $flourescent-blue;
+  }
+
+  .content {
+    padding: 5px;
+    border-radius: 5px;
+    background-color: white;
+
+    li{
+        list-style-type: disc;
+    }
+  }
+}

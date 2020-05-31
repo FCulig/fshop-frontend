@@ -1,3 +1,25 @@
+$black: #0b0c10;
+$lighter-black: #1a1d27;
+$grey: #c5c6c7;
+$flourescent-blue: #66fcf1;
+$flourescent-blue-faded: #66fcf293;
+
 .hero-image{
     width: 100%;
+}
+
+.content{
+
+    h1{
+        background-color: $lighter-black;
+        color: $flourescent-blue;
+    }
+
+    .card{
+        background-color: white;
+        padding: 5px;
+        border-radius: 5px;
+        display: grid;
+        grid-template-columns: repeat(5, 20%);
+    }
 }

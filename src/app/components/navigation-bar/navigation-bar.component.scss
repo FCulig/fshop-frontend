@@ -1,4 +1,5 @@
 $black: #0b0c10;
+$lighter-black: #1a1d27;
 $grey: #c5c6c7;
 $flourescent-blue: #66fcf1;
 $flourescent-blue-faded: #66fcf293;
@@ -65,12 +66,20 @@ ul.navigation li {
 .big-dropdown-content {
   display: none;
   position: absolute;
-  background-color: white;
+  background-color: $lighter-black;
   width: 800px;
   left: -300px;
   top: 58px;
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   z-index: 1;
+
+  &#no-offset {
+    left: 0;
+  }
+
+  &#two-columns {
+    width: 500px;
+  }
 }
 
 .header {
@@ -87,16 +96,21 @@ ul.navigation li {
 
   a {
     float: none;
-    color: black;
-    padding: 16px;
+    color: $flourescent-blue-faded;
+    padding: 10px;
     text-decoration: none;
     display: block;
     text-align: left;
 
     &:hover {
-      background-color: #ddd;
+      background-color: #262a38;
+      color: $flourescent-blue;
     }
   }
+}
+
+#two-columns .column{
+  width: 50%;
 }
 
 .row:after {
@@ -170,8 +184,8 @@ ul.navigation li {
 
 .column {
   fa-icon {
-    background-color: white;
-    font-size: 25pt;
+    font-size: 20pt;
+    background-color: $lighter-black;
   }
 
   fa-icon#child {

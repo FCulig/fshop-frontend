@@ -1,0 +1,14 @@
+<div class="container">
+    <h1>Sve kategorije</h1>
+    <div *ngIf="categories" class="content">
+        <div *ngFor="let mapEntry of categoryMap | keyvalue">
+            <h2>{{mapEntry.key}}</h2>
+            <div *ngFor="let cat of mapEntry.value">
+                <ul>
+                    <li><a href="#" [routerLink]="['/products']" [queryParams]="{category: cat.name}">{{cat.name}}</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
