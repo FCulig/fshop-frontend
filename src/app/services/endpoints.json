@@ -28,5 +28,6 @@
     "COMMENTS": "/comments/",
     "LATEST_COMMENTS": "/latest-comments/",
     "PROFIT": "/profit/",
-    "HOME_PAGE": "home/"
+    "HOME_PAGE": "home/",
+    "COUPONS": "/coupons/"
 }

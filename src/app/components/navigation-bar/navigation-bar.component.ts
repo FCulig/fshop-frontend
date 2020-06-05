@@ -23,6 +23,7 @@ import { ImageService } from "src/app/services/image.service";
 import { NavigationProductService } from "src/app/services/navigation-product.service";
 import { TransactionService } from "src/app/services/transaction.service";
 import { NavigationLogoutService } from "src/app/services/navigation-logout.service";
+import { NavigationBarRefreshOrdersService } from 'src/app/services/navigation-bar-refresh-orders.service';
 
 @Component({
   selector: "app-navigation-bar",
@@ -44,7 +45,7 @@ export class NavigationBarComponent implements OnInit {
   faPepperHot = faPepperHot;
   faCar = faCar;
   faMotorcycle = faMotorcycle;
-  
+
   isLoggedIn: boolean;
   username: string;
   userId: number;
@@ -60,8 +61,9 @@ export class NavigationBarComponent implements OnInit {
     private imageService: ImageService,
     private navigationProductService: NavigationProductService,
     private navigationLogoutService: NavigationLogoutService,
-    private transactionService: TransactionService
-  ) {}
+    private transactionService: TransactionService,
+    private refreshOrderNumber: NavigationBarRefreshOrdersService
+  ) { }
 
   ngOnInit() {
     this.subscribeAuthenticationEvents();
@@ -73,6 +75,9 @@ export class NavigationBarComponent implements OnInit {
       this.logout();
     });
     this.getOrders();
+    this.refreshOrderNumber.refresh$.subscribe(val => {
+      this.getOrders();
+    });
   }
 
   getOrders() {
@@ -80,7 +85,7 @@ export class NavigationBarComponent implements OnInit {
       this.transactionService
         .getUsersOrdersWithStatus(1, this.userId)
         .subscribe((val) => {
-          this.numberPendingOrders = val.length;
+          this.numberPendingOrders = val.length - 1;
         });
     }
   }

@@ -55,6 +55,7 @@ export class FinishShoppingPageComponent implements OnInit {
       last_name: ['', Validators.required],
       address: ['', Validators.required],
       user_id: [this.authenticationService.currentUserValue.user.id, Validators.required],
+      coupon_id: [localStorage.getItem("coupon"), Validators.required]
     });
   }
 

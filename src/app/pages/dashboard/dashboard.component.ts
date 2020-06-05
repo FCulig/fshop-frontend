@@ -6,6 +6,9 @@ import { TransactionService } from "src/app/services/transaction.service";
 import { AuthenticationService } from "src/app/services/authentication.service";
 import { CommentService } from "src/app/services/comment.service";
 import { UserService } from "src/app/services/user.service";
+import { CouponService } from 'src/app/services/coupon.service';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { NotificationService } from 'src/app/services/notification.service';
 
 @Component({
   selector: "app-dashboard",
@@ -60,19 +63,38 @@ export class DashboardComponent implements OnInit {
   transactions;
   transactionsMap = new Map<any, number>();
   profits;
+  coupons;
+
+  newCoupon;
+
+  displayedColumns: string[] = ['code', 'ammount', 'uses'];
 
   constructor(
     private transactionService: TransactionService,
     private authenticationService: AuthenticationService,
     private commentService: CommentService,
-    private userService: UserService
-  ) {}
+    private userService: UserService,
+    private couponService: CouponService,
+    private fb: FormBuilder,
+    private notificationService: NotificationService
+  ) { }
 
   ngOnInit() {
+    this.createCouponForm();
     this.getLatestTransactions();
     this.getLatestComments();
     this.getAllTransactions();
     this.getUsersProfits();
+    this.getUsersCoupons();
+  }
+
+  createCouponForm() {
+    this.newCoupon = this.fb.group({
+      code: [null, Validators.required],
+      ammount: [null, Validators.required],
+      uses: [null, Validators.required],
+      user_id: [this.authenticationService.currentUserValue.user.id, Validators.required]
+    });
   }
 
   getLatestTransactions() {
@@ -145,6 +167,37 @@ export class DashboardComponent implements OnInit {
         this.profits = val;
         console.log(val);
       });
+  }
+
+  getUsersCoupons() {
+    this.couponService.getUsersCoupons(this.authenticationService.currentUserValue.user.id).subscribe(val => {
+      this.coupons = val;
+    });
+  }
+
+  addCoupon() {
+    this.couponService.addNewCoupon(this.newCoupon.value).subscribe(val => {
+      console.log(val);
+      if (val.id) {
+        this.notificationService.showSuccessNotification('Uspješno ste dodali novi kupon', '');
+        this.getUsersCoupons();
+        this.newCoupon.reset();
+      } else {
+        this.notificationService.showErrorNotification(val.message, '');
+      }
+    });
+  }
+
+  public get code() {
+    return this.newCoupon.get('code');
+  }
+
+  public get ammount() {
+    return this.newCoupon.get('ammount');
+  }
+
+  public get uses() {
+    return this.newCoupon.get('uses');
   }
 
   public chartClicked({

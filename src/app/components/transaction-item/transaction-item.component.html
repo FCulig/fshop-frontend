@@ -5,8 +5,12 @@
     <div class="details">
         <a class="product-link" [routerLink]="['/product', transaction.product.id]"
             href="#">{{transaction.product.name}}</a>
-        <div class="price">
+        <div *ngIf="!discountedPrice" class="price">
             {{transaction.quantity}} x {{transaction.product.price}} kn
+        </div>
+        <div *ngIf="discountedPrice" class="price">
+            {{transaction.quantity}} x <span class="crossed">{{transaction.product.price}}</span>
+            {{discountedPrice | number : '1.2-2'}} kn ({{transaction.coupon.code}})
         </div>
         <div class="status">
             Status: <span class="status-indicator"

@@ -87,11 +87,4 @@ export class UsersProductsPageComponent implements OnInit {
     }
   }
 
-  getRestockableProducts() {
-    let restockableIDs = [];
-    this.products.forEach(product => {
-
-    });
-  }
-
 }

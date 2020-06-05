@@ -59,17 +59,40 @@ $flourescent-blue-faded: #66fcf293;
       }
 
       table {
-        border-collapse: collapse;
         width: 100%;
-        text-align: center;
 
-        td {
-          border-top: 1px solid $grey;
+        &#profit-table {
+          border-collapse: collapse;
+          text-align: center;
+
+          td {
+            border-top: 1px solid $grey;
+          }
+
+          &,
+          td {
+            padding: 5px;
+          }
         }
 
-        &,
-        td {
-          padding: 5px;
+        &#coupon-table {
+          margin-bottom: 10px;
+        }
+      }
+
+      form {
+        width: 100%;
+        display: grid;
+        grid-template-columns: repeat(4, 25%);
+        border-top: 1px solid $grey;
+
+        mat-form-field {
+          width: 100%;
+        }
+
+        .button-container {
+          display: flex;
+          align-content: center;
         }
       }
     }

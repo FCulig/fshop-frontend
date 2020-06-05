@@ -4,9 +4,14 @@
     </div>
     <div class="details">
         <a class="product-link" [routerLink]="['/product', order.product.id]" href="#">{{order.product.name}}</a>
-        <div class="price">
+        <div *ngIf="!discountedPrice" class="price">
             {{order.quantity}} x {{order.product.price}} kn
         </div>
+        <div *ngIf="discountedPrice" class="price">
+            {{order.quantity}} x <span class="crossed">{{order.product.price}}</span>
+            {{discountedPrice | number : '1.2-2'}} kn ({{order.coupon.code}})
+        </div>
+
         <div class="status">
             Status: <span class="status-indicator"
                 [ngClass]="{'ordered': order.status.id == 1, 'shipped': order.status.id == 3}">{{order.status.name}}</span>

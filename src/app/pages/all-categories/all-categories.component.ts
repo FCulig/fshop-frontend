@@ -10,7 +10,7 @@ export class AllCategoriesComponent implements OnInit {
   categories;
   categoryMap = new Map<string, string[]>();
 
-  constructor(private categoryService: CategoryService) {}
+  constructor(private categoryService: CategoryService) { }
 
   ngOnInit(): void {
     this.getCategories();
@@ -19,16 +19,17 @@ export class AllCategoriesComponent implements OnInit {
   getCategories() {
     this.categoryService.getAllCategories().subscribe((val) => {
       this.categories = val;
-      console.log(val);
       this.categories.forEach((cat) => {
         const key = cat.name.charAt(0).toUpperCase();
         if (this.categoryMap.get(key)) {
-          this.categoryMap.set(key, (this.categoryMap.get(key)).push(cat));
+          let array = this.categoryMap.get(key);
+          array.push(cat);
+          this.categoryMap.set(key, array);
         } else {
           this.categoryMap.set(key, [cat]);
         }
       });
-      console.log(this.categoryMap)
+      this.categoryMap = new Map([...this.categoryMap.entries()].sort());
     });
   }
 }

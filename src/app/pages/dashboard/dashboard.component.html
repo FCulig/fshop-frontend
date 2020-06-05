@@ -13,7 +13,7 @@
             <div *ngIf="profits" class="card">
                 <h2>Zarada</h2>
                 <div>
-                    <table>
+                    <table id="profit-table">
                         <tr>
                             <th>Zadnjih 7 dana</th>
                             <th>Prošli mjesec</th>
@@ -25,6 +25,72 @@
                             <td>{{profits.total}}kn</td>
                         </tr>
                     </table>
+                </div>
+            </div>
+
+            <div class="card">
+                <h2>Kuponi za popust</h2>
+                <div>
+                    <div *ngIf="!coupons">
+                        Nemate kupona za popuste!
+                    </div>
+                    <table id="coupon-table" *ngIf="coupons" mat-table [dataSource]="coupons" class="mat-elevation-z8">
+                        <ng-container matColumnDef="code">
+                            <th mat-header-cell *matHeaderCellDef>Kupon</th>
+                            <td mat-cell *matCellDef="let element"> {{element.code}} </td>
+                        </ng-container>
+
+                        <ng-container matColumnDef="ammount">
+                            <th mat-header-cell *matHeaderCellDef>Postotak</th>
+                            <td mat-cell *matCellDef="let element"> {{element.ammount}}% </td>
+                        </ng-container>
+
+                        <ng-container matColumnDef="uses">
+                            <th mat-header-cell *matHeaderCellDef>Broj ostalih kupona</th>
+                            <td mat-cell *matCellDef="let element"> {{element.uses}} </td>
+                        </ng-container>
+
+                        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                    </table>
+                    <form [formGroup]="newCoupon" (submit)="addCoupon()">
+                        <div>
+                            <mat-form-field>
+                                <mat-label>Kupon</mat-label>
+                                <input type="text" name="code" formControlName="code" matInput>
+                                <mat-error *ngIf="code.hasError('required')">
+                                    Naziv kupona je <strong>obavezan</strong>
+                                </mat-error>
+                            </mat-form-field>
+                        </div>
+
+                        <div>
+                            <mat-form-field>
+                                <mat-label>Popust u %</mat-label>
+                                <input type="number" name="ammount" formControlName="ammount" matInput>
+                                <mat-error *ngIf="ammount.hasError('required')">
+                                    Popust kupona je <strong>obavezan</strong>
+                                </mat-error>
+                            </mat-form-field>
+                        </div>
+
+                        <div>
+                            <mat-form-field>
+                                <mat-label>Broj kupona</mat-label>
+                                <input type="number" name="uses" formControlName="uses" matInput>
+                                <mat-error *ngIf="uses.hasError('required')">
+                                    Broj kupona je <strong>obavezan</strong>
+                                </mat-error>
+                            </mat-form-field>
+                        </div>
+
+                        <div class="button-container">
+                            <div>
+                                <button [disabled]="!newCoupon.valid" mat-raised-button color="accent"
+                                    type="submit">Dodaj kupon</button>
+                            </div>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>

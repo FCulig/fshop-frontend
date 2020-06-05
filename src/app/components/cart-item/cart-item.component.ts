@@ -11,10 +11,25 @@ import { EventEmitter } from '@angular/core';
   styleUrls: ['./cart-item.component.scss']
 })
 export class CartItemComponent implements OnInit {
-  faTimes = faTimes;
+  private _coupon;
 
-  @Input() item;
+  faTimes = faTimes;
+  itemPrice;
+  discountedPrice;
+
   @Output() emitRefreshCart = new EventEmitter();
+  @Output() couponChange = new EventEmitter();
+  @Input() item;
+  @Input()
+  set coupon(coupon) {
+    this._coupon = coupon;
+    if (coupon && this.item && this.item.products_owner == coupon.user.id) {
+      this.discountedPrice = this.item.price - (this.item.price * coupon.ammount / 100);
+    }
+  }
+  get coupon() {
+    return this._coupon;
+  }
 
   constructor(
     private imageService: ImageService,
@@ -23,6 +38,8 @@ export class CartItemComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    console.log(this.item);
+    this.itemPrice = this.item.price;
   }
 
   getProductImage(url) {

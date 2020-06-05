@@ -4,22 +4,29 @@ $grey: #c5c6c7;
 $flourescent-blue: #66fcf1;
 $flourescent-blue-faded: #66fcf293;
 
-.hero-image{
+.hero-image {
     width: 100%;
 }
 
-.content{
+.content {
+    margin-top: -5px;
+    background-color: $lighter-black;
 
-    h1{
-        background-color: $lighter-black;
+    h1 {
         color: $flourescent-blue;
+        padding-bottom: 10px;
+        font-size: 3em;
     }
 
-    .card{
+    .card {
         background-color: white;
         padding: 5px;
-        border-radius: 5px;
+        border-radius: 5px !important;
         display: grid;
         grid-template-columns: repeat(5, 20%);
+    }
+
+    .row {
+        padding-bottom: 30px !important;
     }
 }

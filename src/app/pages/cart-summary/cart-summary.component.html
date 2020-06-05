@@ -1,7 +1,25 @@
 <div class="container">
+    <h1>Moja košarica</h1>
     <div *ngIf="cart && cart.items.length > 0">
         <div class="cart-items">
-            <app-cart-item (emitRefreshCart)="getCart()" *ngFor="let item of cart.items" [item]="item"></app-cart-item>
+            <app-cart-item (couponChange)="getTotalPrice()" (emitRefreshCart)="getCart()"
+                *ngFor="let item of cart.items" [coupon]="discountCoupon" [item]="item"></app-cart-item>
+        </div>
+        <div class="apply-coupon">
+            <form [formGroup]="applyCoupon" (submit)="apply()">
+                <div>
+                    <mat-form-field>
+                        <mat-label>Kupon za popust</mat-label>
+                        <input type="text" name="coupon" formControlName="coupon" matInput>
+                    </mat-form-field>
+                </div>
+                <div class="button-container">
+                    <div>
+                        <button [disabled]="!applyCoupon.valid" mat-raised-button color="accent" type="submit">Primjeni
+                            kupon</button>
+                    </div>
+                </div>
+            </form>
         </div>
         <div class="summary">
             <p>Ukupno: {{ getTotalPrice() | number:'1.2-2'}} kn</p>

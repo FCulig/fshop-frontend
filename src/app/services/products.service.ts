@@ -7,7 +7,7 @@ import { Observable } from "rxjs";
   providedIn: "root",
 })
 export class ProductsService {
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   getAllProducts(): Observable<any> {
     return this.http.get(Endpoints.BASE_URL + Endpoints.PRODUCTS);
@@ -32,9 +32,9 @@ export class ProductsService {
   getUsersProducts(userId): Observable<any> {
     return this.http.get(
       Endpoints.BASE_URL +
-        Endpoints.USERS +
-        userId +
-        Endpoints.USERS_PRODUCTS_EXT
+      Endpoints.USERS +
+      userId +
+      Endpoints.USERS_PRODUCTS_EXT
     );
   }
 

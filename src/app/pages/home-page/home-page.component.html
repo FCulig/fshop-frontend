@@ -1,11 +1,17 @@
 <img class="hero-image" src="../../../assets/Images/FullLogo.jpg">
 <div class="content">
-    <h1>Najpopularniji proizvodi:</h1>
-    <div *ngIf="popularProducts" class="card">
-        <app-shop-item *ngFor="let item of popularProducts" [product]="item.product"></app-shop-item>
+    <div class="row">
+        <h1>Najpopularniji proizvodi:</h1>
+        <div *ngIf="products" class="card">
+            <app-shop-item *ngFor="let item of products.popular" [product]="item.product"></app-shop-item>
+        </div>
     </div>
-    <h1>Najpopularnije kategorije:</h1>
-    <div class="card">
-
+    <div *ngFor="let cat of keys" class="row">
+        <div *ngIf="products && cat != 'popular'">
+            <h1>{{cat}}</h1>
+            <div class="card">
+                <app-shop-item *ngFor="let item of products[cat]" [product]="item"></app-shop-item>
+            </div>
+        </div>
     </div>
 </div>

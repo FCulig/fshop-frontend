@@ -4,8 +4,11 @@
     </div>
     <div class="name-price">
         <a class="product-link" [routerLink]="['/product', item.product_id]" href="#">{{item.product_name}}</a>
-        <div class="price">
-            {{item.quantity}} x {{item.price}} kn
+        <div *ngIf="!discountedPrice" class="price">
+            {{item.quantity}} x {{itemPrice}} kn
+        </div>
+        <div *ngIf="discountedPrice" class="price">
+            {{item.quantity}} x <span class="crossed">{{itemPrice}}</span> {{discountedPrice | number : '1.2-2'}} kn
         </div>
     </div>
     <div class="delete">

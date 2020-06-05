@@ -7,9 +7,10 @@ import { ProductsService } from "src/app/services/products.service";
   styleUrls: ["./home-page.component.scss"],
 })
 export class HomePageComponent implements OnInit {
-  popularProducts;
+  products;
+  keys;
 
-  constructor(private productService: ProductsService) {}
+  constructor(private productService: ProductsService) { }
 
   ngOnInit() {
     this.getProducts();
@@ -17,8 +18,9 @@ export class HomePageComponent implements OnInit {
 
   getProducts() {
     this.productService.getHomePageProducts().subscribe((val) => {
+      this.products = val;
       console.log(val);
-      this.popularProducts = val.popular;
+      this.keys = Object.keys(val);
     });
   }
 }

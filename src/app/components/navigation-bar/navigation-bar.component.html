@@ -1,8 +1,9 @@
 <div class="navigation-bar-container">
   <nav class="left-side">
     <ul class="navigation">
+      <li><a [routerLink]="['/']" href="" class="brk-btn">Naslovna</a></li>
       <div class="dropdown">
-        <li><a href="" class="brk-btn">Računala i mobiteli</a></li>
+        <li><a href="" class="brk-btn">IT Oprema</a></li>
         <div id="no-offset" class="big-dropdown-content">
           <div class="header">
             <h2>IT Oprema</h2>
@@ -12,31 +13,35 @@
               <h3>
                 <fa-icon [icon]="faMemory"></fa-icon> Komponente
               </h3>
-              <a href="#">Memorija</a>
-              <a href="#">RAM</a>
-              <a href="#">Procesori</a>
-              <a href="#">Grafičke kartice</a>
-              <a href="#">Napajanja</a>
-              <a href="#">Ostale komponente</a>
+              <a [routerLink]="['/products']" [queryParams]="{category: 'Memorija'}" href="#">Memorija</a>
+              <a [routerLink]="['/products']" [queryParams]="{category: 'RAM'}" href="#">RAM</a>
+              <a [routerLink]="['/products']" [queryParams]="{category: 'Procesori'}" href="#">Procesori</a>
+              <a [routerLink]="['/products']" [queryParams]="{category: 'Grafičke kartice'}" href="#">Grafičke
+                kartice</a>
+              <a [routerLink]="['/products']" [queryParams]="{category: 'Napajanja'}" href="#">Napajanja</a>
+              <a [routerLink]="['/products']" [queryParams]="{category: 'Ostale komponente'}" href="#">Ostale
+                komponente</a>
             </div>
             <div class="column">
               <h3>
                 <fa-icon [icon]="faKeyboard"></fa-icon> Periferija
               </h3>
-              <a href="#">Tipkovnice</a>
-              <a href="#">Miševi</a>
-              <a href="#">Monitori</a>
-              <a href="#">Audio i video</a>
-              <a href="#">Ostala periferija</a>
+              <a [routerLink]="['/products']" [queryParams]="{category: 'Tipkovnice'}" href="#">Tipkovnice</a>
+              <a [routerLink]="['/products']" [queryParams]="{category: 'Miševi'}" href="#">Miševi</a>
+              <a [routerLink]="['/products']" [queryParams]="{category: 'Monitori'}" href="#">Monitori</a>
+              <a [routerLink]="['/products']" [queryParams]="{category: 'Audio i video'}" href="#">Audio i video</a>
+              <a [routerLink]="['/products']" [queryParams]="{category: 'Ostala periferija'}" href="#">Ostala
+                periferija</a>
             </div>
             <div class="column">
               <h3>
                 <fa-icon [icon]="faDesktop"></fa-icon> Računala
               </h3>
-              <a href="#">Prijenosna računala</a>
-              <a href="#">Stolna računala</a>
-              <a href="#">Serveri</a>
-              <a href="#">Ostala računala</a>
+              <a [routerLink]="['/products']" [queryParams]="{category: 'Prijenosna računala'}" href="#">Prijenosna
+                računala</a>
+              <a [routerLink]="['/products']" [queryParams]="{category: 'Stolna računala'}" href="#">Stolna računala</a>
+              <a [routerLink]="['/products']" [queryParams]="{category: 'Serveri'}" href="#">Serveri</a>
+              <a [routerLink]="['/products']" [queryParams]="{category: 'Ostala računala'}" href="#">Ostala računala</a>
             </div>
           </div>
         </div>
@@ -52,30 +57,32 @@
               <h3>
                 <fa-icon [icon]="faUtensils"></fa-icon> Hrana
               </h3>
-              <a href="#">Voće</a>
-              <a href="#">Povrće</a>
-              <a href="#">Kolači</a>
-              <a href="#">Zimnica</a>
-              <a href="#">Meso i mesnati proizvodi</a>
-              <a href="#">Ostala hrana</a>
+              <a [routerLink]="['/products']" [queryParams]="{category: 'Voće'}" href="#">Voće</a>
+              <a [routerLink]="['/products']" [queryParams]="{category: 'Povrće'}" href="#">Povrće</a>
+              <a [routerLink]="['/products']" [queryParams]="{category: 'Kolači'}" href="#">Kolači</a>
+              <a [routerLink]="['/products']" [queryParams]="{category: 'Zimnica'}" href="#">Zimnica</a>
+              <a [routerLink]="['/products']" [queryParams]="{category: 'Meso i mesnati
+              proizvodi'}" href="#">Meso i mesnati
+                proizvodi</a>
+              <a [routerLink]="['/products']" [queryParams]="{category: 'Ostala hrana'}" href="#">Ostala hrana</a>
             </div>
             <div class="column">
               <h3>
                 <fa-icon [icon]="faWineGlass"></fa-icon> Piće
               </h3>
-              <a href="#">Vina</a>
-              <a href="#">Sokovi</a>
-              <a href="#">Kava</a>
-              <a href="#">Ostala pića</a>
+              <a [routerLink]="['/products']" [queryParams]="{category: 'Vina'}" href="#">Vina</a>
+              <a [routerLink]="['/products']" [queryParams]="{category: 'Sokovi'}" href="#">Sokovi</a>
+              <a [routerLink]="['/products']" [queryParams]="{category: 'Kava'}" href="#">Kava</a>
+              <a [routerLink]="['/products']" [queryParams]="{category: 'Ostala pića'}" href="#">Ostala pića</a>
             </div>
             <div class="column">
               <h3>
                 <fa-icon [icon]="faPepperHot"></fa-icon> Začini
               </h3>
-              <a href="#">Ulja</a>
-              <a href="#">Masti</a>
-              <a href="#">Žitarice</a>
-              <a href="#">Ostali začini</a>
+              <a [routerLink]="['/products']" [queryParams]="{category: 'Ulja'}" href="#">Ulja</a>
+              <a [routerLink]="['/products']" [queryParams]="{category: 'Masti'}" href="#">Masti</a>
+              <a [routerLink]="['/products']" [queryParams]="{category: 'Žitarice'}" href="#">Žitarice</a>
+              <a [routerLink]="['/products']" [queryParams]="{category: 'Ostali začini'}" href="#">Ostali začini</a>
             </div>
           </div>
         </div>
@@ -91,21 +98,24 @@
               <h3>
                 <fa-icon [icon]="faCar"></fa-icon> Automobili
               </h3>
-              <a href="#">Osobni automobili</a>
-              <a href="#">Kamperi</a>
-              <a href="#">Gospodarksa vozila</a>
-              <a href="#">Ostali automobili</a>
+              <a [routerLink]="['/products']" [queryParams]="{category: 'Osobni automobili'}" href="#">Osobni
+                automobili</a>
+              <a [routerLink]="['/products']" [queryParams]="{category: 'Kamperi'}" href="#">Kamperi</a>
+              <a [routerLink]="['/products']" [queryParams]="{category: 'Gospodarksa vozila'}" href="#">Gospodarksa
+                vozila</a>
+              <a [routerLink]="['/products']" [queryParams]="{category: 'Ostali automobili'}" href="#">Ostali
+                automobili</a>
             </div>
             <div class="column">
               <h3>
                 <fa-icon [icon]="faMotorcycle"></fa-icon> Motori
               </h3>
-              <a href="#">Skuteri</a>
-              <a href="#">Cross</a>
-              <a href="#">Cestovni</a>
-              <a href="#">Quad</a>
-              <a href="#">Cestovni</a>
-              <a href="#">Ostali motori</a>
+              <a [routerLink]="['/products']" [queryParams]="{category: 'Skuteri'}" href="#">Skuteri</a>
+              <a [routerLink]="['/products']" [queryParams]="{category: 'Cross'}" href="#">Cross</a>
+              <a [routerLink]="['/products']" [queryParams]="{category: 'Cestovni'}" href="#">Cestovni</a>
+              <a [routerLink]="['/products']" [queryParams]="{category: 'Quad'}" href="#">Quad</a>
+              <a [routerLink]="['/products']" [queryParams]="{category: 'Cestovni'}" href="#">Cestovni</a>
+              <a [routerLink]="['/products']" [queryParams]="{category: 'Ostali motori'}" href="#">Ostali motori</a>
             </div>
           </div>
         </div>

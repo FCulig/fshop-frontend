@@ -10,9 +10,21 @@ import { EventEmitter } from '@angular/core';
   styleUrls: ['./transaction-item.component.scss']
 })
 export class TransactionItemComponent implements OnInit {
+  private _transaction;
 
-  @Input() transaction;
   @Output() refreshTransactions = new EventEmitter();
+  @Input() set transaction(transaction) {
+    this._transaction = transaction;
+    if (transaction.coupon && transaction.product.price) {
+      this.discountedPrice = transaction.product.price - (transaction.product.price * transaction.coupon.ammount / 100);
+    }
+  }
+
+  get transaction() {
+    return this._transaction;
+  }
+
+  discountedPrice;
 
   constructor(
     private imageService: ImageService,

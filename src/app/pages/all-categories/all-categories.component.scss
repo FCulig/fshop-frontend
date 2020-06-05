@@ -15,12 +15,33 @@ $flourescent-blue-faded: #66fcf293;
   }
 
   .content {
-    padding: 5px;
+    padding: 15px;
     border-radius: 5px;
     background-color: white;
+    display: grid;
+    grid-template-columns: repeat(4, 25%);
 
-    li{
+    h2 {
+      font-size: 2em;
+      margin-bottom: 5px;
+    }
+
+    ul {
+      list-style-position: inside;
+      padding-bottom: 10px;
+
+      li {
         list-style-type: disc;
+
+        a {
+          text-decoration: none;
+          font-size: 1.2em;
+
+          &:hover {
+            text-decoration: underline;
+          }
+        }
+      }
     }
   }
 }

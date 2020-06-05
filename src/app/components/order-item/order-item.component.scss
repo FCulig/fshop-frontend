@@ -4,6 +4,10 @@ $grey: #c5c6c7;
 $flourescent-blue: #66fcf1;
 $flourescent-blue-faded: #66fcf293;
 
+.crossed{
+    text-decoration: line-through;
+}
+
 .container {
     display: grid;
     grid-template-columns: 20% 75% 5%;
