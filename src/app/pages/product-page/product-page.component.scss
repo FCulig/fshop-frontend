@@ -19,12 +19,12 @@ h1 {
   .comments,
   .product-container {
     border-radius: 5px;
-    padding: 15px;
   }
 
   .product-container {
     background-color: $lighter-black;
-
+    padding: 15px;
+    
     .gallery-container,
     .product-details-container {
       padding: 15px;

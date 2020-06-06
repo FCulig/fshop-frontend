@@ -42,9 +42,11 @@ $flourescent-blue-faded: #66fcf293;
             button {
                 width: 60%;
                 background-color: $flourescent-blue-faded;
+                color: black;
 
                 &:hover {
                     background-color: $flourescent-blue;
+                    cursor: pointer;
                 }
             }
         }
