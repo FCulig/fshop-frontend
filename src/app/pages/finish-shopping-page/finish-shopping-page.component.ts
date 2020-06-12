@@ -57,6 +57,7 @@ export class FinishShoppingPageComponent implements OnInit {
       user_id: [this.authenticationService.currentUserValue.user.id, Validators.required],
       coupon_id: [localStorage.getItem("coupon")]
     });
+    localStorage.setItem("coupon", "");
   }
 
   submit() {

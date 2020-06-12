@@ -3,14 +3,14 @@
     <div class="row">
         <h1>Najpopularniji proizvodi:</h1>
         <div *ngIf="products" class="card">
-            <app-shop-item *ngFor="let item of products.popular" [product]="item.product"></app-shop-item>
+            <app-shop-item *ngFor="let item of products.popular" [routerLink]="['/product', item.item_id]" [product]="item.product"></app-shop-item>
         </div>
     </div>
     <div *ngFor="let cat of keys" class="row">
         <div *ngIf="products && cat != 'popular'">
             <h1>{{cat}}</h1>
             <div class="card">
-                <app-shop-item *ngFor="let item of products[cat]" [product]="item"></app-shop-item>
+                <app-shop-item *ngFor="let item of products[cat]" [routerLink]="['/product', item.id]" [product]="item"></app-shop-item>
             </div>
         </div>
     </div>
