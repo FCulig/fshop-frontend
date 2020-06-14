@@ -19,7 +19,6 @@ export class HomePageComponent implements OnInit {
   getProducts() {
     this.productService.getHomePageProducts().subscribe((val) => {
       this.products = val;
-      console.log(val);
       this.keys = Object.keys(val);
     });
   }

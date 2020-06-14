@@ -57,7 +57,6 @@ export class ProductFormComponent implements OnInit {
       this.productQuantity = this.data?.quantity;
     }
 
-    console.log(this.restockingError);
     this.productForm = this.fb.group({
       name: [this.data?.name, Validators.required],
       description: [this.data?.description, Validators.required],
@@ -67,7 +66,6 @@ export class ProductFormComponent implements OnInit {
       category_id: [this.data?.category_id, Validators.required],
       product_images: []
     });
-    console.log(this.productForm.value);
   }
 
   onNoClick(): void {
@@ -80,7 +78,6 @@ export class ProductFormComponent implements OnInit {
 
   submit() {
     if ((this.selectedImages && this.selectedImages.length > 0) || this.data?.images) {
-      console.log(this.productForm.value);
       let formData = new FormData();
       for (let i = 0; i < this.selectedImages.length; i++) {
         formData.append('product_images[]', this.selectedImages[i], this.selectedImages[i]['name']);

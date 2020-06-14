@@ -23,10 +23,16 @@ $flourescent-blue-faded: #66fcf293;
     padding-left: 0px;
 }
 
-.image-container img {
-    width: 50%;
-    display: block;
-    margin: auto;
+.image-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    img {
+        width: 70%;
+        display: block;
+        margin: auto;
+    }
 }
 
 .managment-conatiner {
