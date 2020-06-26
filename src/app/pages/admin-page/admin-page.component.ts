@@ -33,7 +33,6 @@ export class AdminPageComponent implements AfterViewInit {
   createComponent(component) {
     const factory: ComponentFactory<any> = this.resolver.resolveComponentFactory(component);
     let componentRef = this.container.createComponent(factory);
-    //this.container.createComponent(factory);
   }
 
   setActiveComponent(key: string) {

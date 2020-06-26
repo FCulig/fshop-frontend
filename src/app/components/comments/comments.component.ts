@@ -12,18 +12,22 @@ import { NotificationService } from "src/app/services/notification.service";
 export class CommentsComponent implements OnInit {
   @Input() productId;
   @Input() comments;
-  
+
   commentForm;
+  isLoggedIn = false;
 
   constructor(
     private commentService: CommentService,
     private fb: FormBuilder,
     private authenticationService: AuthenticationService,
     private notificationService: NotificationService
-  ) {}
+  ) { }
 
   ngOnInit(): void {
-    this.createForm();
+    if (this.authenticationService.currentUserValue && this.authenticationService.currentUserValue.access_token) {
+      this.isLoggedIn = true;
+      this.createForm();
+    }
   }
 
   createForm() {

@@ -38,10 +38,20 @@ export class ProductFormComponent implements OnInit {
 
 
   ngOnInit() {
+    this.setUpQuantity();
+    this.createProductForm();
+    setTimeout(() => {
+      this.getCategories();
+    });
+  }
+
+  private getCategories() {
     this.categoryService.getAllCategories().subscribe(val => {
       this.categories = val;
     });
+  }
 
+  private setUpQuantity() {
     this.userId = this.authenticationService.currentUserValue.user.id;
 
     if (this.authenticationService.currentUserValue.user.role_id == 3) {
@@ -56,7 +66,9 @@ export class ProductFormComponent implements OnInit {
     } else {
       this.productQuantity = this.data?.quantity;
     }
+  }
 
+  private createProductForm() {
     this.productForm = this.fb.group({
       name: [this.data?.name, Validators.required],
       description: [this.data?.description, Validators.required],

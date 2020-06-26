@@ -14,7 +14,7 @@
 
         <div class="status">
             Status: <span class="status-indicator"
-                [ngClass]="{'ordered': order.status.id == 1, 'shipped': order.status.id == 3}">{{order.status.name}}</span>
+                [ngClass]="{'ordered': order.status.id == 1, 'shipped': order.status.id == 3, 'canceled': order.status.id == 4}">{{order.status.name}}</span>
         </div>
         <div class="address">
             {{order.address}}, {{order.city}} {{order.zip_code}}, {{order.country}}

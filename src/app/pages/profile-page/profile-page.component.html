@@ -42,8 +42,16 @@
             </div>
         </div>
 
-        <div class="user-content">
-            <app-shop-item *ngFor="let product of usersProducts" [product]="product"></app-shop-item>
+        <div *ngIf="usersProducts.length > 0" class="user-content">
+            <div class="items">
+                <app-shop-item *ngFor="let product of usersProducts" [product]="product"></app-shop-item>
+            </div>
+        </div>
+
+        <div *ngIf="usersProducts.length == 0" class="white-background">
+            <div>
+                <h3>Korisnik nema proizvoda na prodaji</h3>
+            </div>
         </div>
     </div>
 </div>

@@ -72,7 +72,6 @@ export class ProfilePageComponent implements OnInit {
 
   getUsersProducts(userId) {
     this.productService.getUsersProducts(userId).subscribe(val => {
-      console.log(val);
       let products = [];
       if (val) {
         val.forEach(product => {
@@ -83,6 +82,7 @@ export class ProfilePageComponent implements OnInit {
       }
 
       this.usersProducts = products;
+      console.log(this.usersProducts.length);
     });
   }
 

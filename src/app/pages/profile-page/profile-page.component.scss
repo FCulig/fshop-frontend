@@ -11,6 +11,10 @@ $flourescent-blue-faded: #66fcf293;
     grid-template-columns: 2.5fr 8fr;
 }
 
+.body {
+    min-height: 100vh;
+}
+
 .header {
     .profile-image-conainer {
         padding: 15px;
@@ -61,14 +65,29 @@ $flourescent-blue-faded: #66fcf293;
 
 .user-content {
     margin-left: 15px;
-    border-radius: 5px;
     min-height: 100vh;
-
     background-color: $lighter-black;
-    display: grid;
-    grid-template-columns: repeat(5, 20%);
 
-    app-shop-item {
-        margin-right: 5px;
+    .items {
+        border-radius: 5px;
+        display: grid;
+        grid-template-columns: repeat(5, 20%);
+        background-color: white;
+        app-shop-item {
+            margin-right: 5px;
+        }
+    }
+}
+
+.white-background div {
+    background-color: white;
+    color: $lighter-black;
+    margin-left: 15px;
+    border-radius: 5px;
+    padding: 5px;
+    text-align: center;
+
+    h3 {
+        font: 3em;
     }
 }

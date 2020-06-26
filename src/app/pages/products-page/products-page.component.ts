@@ -33,6 +33,18 @@ export class ProductsPageComponent implements OnInit {
 
   ngOnInit(): void {
     this.createFilterForm();
+    this.getQueryParameters();
+  }
+
+  createFilterForm() {
+    this.filterForm = this.fb.group({
+      category: null,
+      minPrice: null,
+      maxPrice: null
+    });
+  }
+
+  getQueryParameters() {
     this.route.queryParams.subscribe(params => {
       for (var key in params) {
         if (params.hasOwnProperty(key)) {
@@ -41,14 +53,6 @@ export class ProductsPageComponent implements OnInit {
       }
 
       this.getAllCategoires();
-    });
-  }
-
-  createFilterForm() {
-    this.filterForm = this.fb.group({
-      category: null,
-      minPrice: null,
-      maxPrice: null
     });
   }
 

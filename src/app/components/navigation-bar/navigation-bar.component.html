@@ -174,8 +174,8 @@
             <fa-icon [icon]="faUser"></fa-icon>
           </a>
           <div *ngIf="isLoggedIn" class="small-dropdown-content">
-            <a *ngIf="roleId == 1" class="dropdown-link" [routerLink]="['/admin']" href="#">Admin panel</a>
-            <a *ngIf="roleId != 3" class="dropdown-link" [routerLink]="['/dashboard']" href="#">Dashboard</a>
+            <a *ngIf="roleId == 1" class="dropdown-link" [routerLink]="['/admin']" href="#">Upravljačka ploča</a>
+            <a *ngIf="roleId != 3" class="dropdown-link" [routerLink]="['/dashboard']" href="#">Statistika poslovanja</a>
             <a class="dropdown-link" [routerLink]="['/shopping-history', userId]" href="#">Povijest kupnje</a>
             <a class="dropdown-link" matBadgeHidden="{{numberPendingOrders == 0}}" matBadge="{{numberPendingOrders}}"
               matBadgePosition="after" matBadgeColor="warn" [routerLink]="['/selling', userId]" href="#">Narudžbe</a>

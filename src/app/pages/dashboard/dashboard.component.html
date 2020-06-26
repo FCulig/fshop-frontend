@@ -5,8 +5,13 @@
             <div *ngIf="latestTransactions" class="card">
                 <h2>Prodaja zadnjih 7 dana</h2>
                 <div>
-                    <canvas baseChart [data]="pieChartData" [labels]="pieChartLabels" [chartType]="pieChartType"
-                        [options]="pieChartOptions" [plugins]="pieChartPlugins" [legend]="pieChartLegend">
+                    <canvas baseChart 
+                        [data]="pieChartData" 
+                        [labels]="pieChartLabels"
+                        [chartType]="pieChartType"
+                        [options]="pieChartOptions" 
+                        [plugins]="pieChartPlugins" 
+                        [legend]="pieChartLegend">
                     </canvas>
                 </div>
             </div>

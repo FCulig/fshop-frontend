@@ -4,7 +4,7 @@ $grey: #c5c6c7;
 $flourescent-blue: #66fcf1;
 $flourescent-blue-faded: #66fcf293;
 
-.crossed{
+.crossed {
     text-decoration: line-through;
 }
 
@@ -50,6 +50,10 @@ $flourescent-blue-faded: #66fcf293;
 
         .shipped {
             background-color: rgb(10, 177, 23);
+        }
+
+        .canceled {
+            background-color: rgb(247, 46, 46);
         }
     }
 

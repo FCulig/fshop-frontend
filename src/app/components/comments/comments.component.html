@@ -1,4 +1,4 @@
-<div class="new-comment">
+<div *ngIf="isLoggedIn" class="new-comment">
     <h1>Komentari</h1>
     <form [formGroup]="commentForm" (submit)="submit()">
         <mat-form-field class="input">

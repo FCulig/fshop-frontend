@@ -105,7 +105,6 @@ export class DashboardComponent implements OnInit {
       .subscribe((val) => {
         this.latestTransactions = val;
         this.latestTransactionMap = this.createTransactionsMap(val);
-        console.log(val);
         this.latestTransactionMap.forEach((value, key) => {
           this.pieChartLabels.push(key.name);
           this.pieChartData.push(value);
@@ -122,7 +121,6 @@ export class DashboardComponent implements OnInit {
       .subscribe((val) => {
         this.transactions = val;
         this.transactionsMap = this.createTransactionsMap(val);
-        console.log(val);
         this.transactionsMap.forEach((value, key) => {
           this.barChartLabels.push(key.name);
           this.barChartData[0].data.push(value);
@@ -144,7 +142,6 @@ export class DashboardComponent implements OnInit {
         map.set(key, map.get(key) + transaction.quantity);
       }
     });
-    console.log(map);
 
     return map;
   }
@@ -165,7 +162,6 @@ export class DashboardComponent implements OnInit {
       .getUsersProfit(this.authenticationService.currentUserValue.user.id)
       .subscribe((val) => {
         this.profits = val;
-        console.log(val);
       });
   }
 
@@ -207,7 +203,6 @@ export class DashboardComponent implements OnInit {
     event: MouseEvent;
     active: {}[];
   }): void {
-    console.log(event, active);
   }
 
   public chartHovered({
@@ -217,6 +212,5 @@ export class DashboardComponent implements OnInit {
     event: MouseEvent;
     active: {}[];
   }): void {
-    console.log(event, active);
   }
 }
